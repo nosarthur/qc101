@@ -1,7 +1,7 @@
 # Minimal makefile for Sphinx documentation
 #
 
-.PHONY: help Makefile copy
+.PHONY: help Makefile copy clean
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -20,6 +20,9 @@ help:
 
 cp:
 	cp -fr  _build/html ~/storage/downloads/
+
+clean:
+	rm -fr ~/storage/downloads/html
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

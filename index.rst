@@ -29,5 +29,5 @@ biased to my interest
    motives
    information
    algo
-   communication
+   others
    hardwares

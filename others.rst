@@ -1,6 +1,6 @@
-*********************
-Quantum communication
-*********************
+************
+Other topics
+************
 
 Super dense coding
 ==================

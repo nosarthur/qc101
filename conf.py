@@ -40,7 +40,10 @@ release = '0.1'
 # ones.
 extensions = [
     'sphinx.ext.mathjax',
+    'sphinx.ext.extlinks',
 ]
+
+extlinks = {'wiki': ('https://en.wikipedia.org/wiki/%s', '')}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
