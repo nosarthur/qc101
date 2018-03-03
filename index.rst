@@ -6,20 +6,19 @@
 Quantum computing 101 for non-physicists
 ========================================
 
-The goal of this document is to for someone with technical background but not physics background.
-
-prerequisite
+The goal of this document is to provide a gentle introduction to quantum computing for someone with technical background but not physics background.
+It is assumed that the reader is familiar with
 
 * linear algebra
 * probability theory
 
-The general principle I follow in preparing this material
+The principles I follow in preparing this material are
 
-* minimal
-* concrete
-* self-contained
+* Concise is better than verbose.
+* Concrete is better than abstract.
+* Self-contained is better than cross-referencing.
 
-biased to my interest
+Choices of the materials are biased to my interest.
 
 .. toctree::
    :maxdepth: 2
@@ -29,5 +28,4 @@ biased to my interest
    motives
    information
    algo
-   others
    hardwares

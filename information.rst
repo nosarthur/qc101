@@ -137,3 +137,6 @@ Dividing this 10 by the number of tosses 1000, we basically get the entropy of t
 
 
 
+Super dense coding
+==================
+

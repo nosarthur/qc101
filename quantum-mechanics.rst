@@ -2,19 +2,14 @@
 Quantum mechanics
 *****************
 
-
-
 This chapter is about the physics background needed for quantum computing.
-The good news is that as long as we do not worry about the implementations on hardware (superconducting circuits, quantum optics, nuclear magnetic resonance, etc),
-the physics we need is minimal, and that will be the strategy we adopt here.
+The good news is that not much physics is needed as long as we do not worry about hardware implementations (superconducting circuits, quantum optics, nuclear magnetic resonance, etc).
 Specifically, the shortcuts we take include
 
-* The only quantum objects we consider will be :wiki:`quantum two level systems, i.e., qubits <Qubit>`.
-* We will use coin tossing as analogy for measurements on qubits, even though it doesn't work well in many cases.
-* As long as we can show an operation is unitary, we will assume it can be somehow implemented on hardware.
-
-
-
+1. Only :wiki:`quantum two level systems, i.e., qubits <Qubit>` are considered.
+#. Coin tossing is used as analogy/comparison for measurements on qubits.
+#. All unitary operations are assumed to be efficiently implemented on hardware.
+#. All quantum gates have perfect fidelities, i.e., no :wiki:`decoherence <Quantum_decoherence>`.
 
 .. _Bernoulli distribution: https://en.wikipedia.org/wiki/Bernoulli_distribution
 .. _binomial distribution: https://en.wikipedia.org/wiki/Binomial_distribution
@@ -22,36 +17,92 @@ Specifically, the shortcuts we take include
 Quantum mechanics in a nutshell
 ===============================
 
-The foundations of :wiki:`quantum mechanics <Quantum_mechanics>` was laid down between late 19th century and early 20th century by many famous scientists such :wiki:`Heisenberg <Werner_Heisenberg>`, :wiki:`Schrödinger <Erwin_Schrödinger>`, :wiki:`von Neumann <John_von_Neumann>`, :wiki:`Einstein <Albert_Einstein>`.
-Its predecessor, the so-called :wiki:`classical mechanics <Classical_mechanics>` was developed between 17th and 19th century by many famous scientists such as
-:wiki:`Sir Newton <Isaac_Newton>`, :wiki:`Lagrange <Joseph-Louis_Lagrange>`, and :wiki:`Sir Hamilton <William_Rowan_Hamilton>`.
-Here the word ':wiki:`mechanics <Mechanics>`' refers to how objects moves or evolves with respect to time.
-For example, the famous Newton's second law is a central piece in classical mechanics.
+The predecessor of quantum mechanics, the so-called :wiki:`classical mechanics <Classical_mechanics>` was developed between 17th and 19th century by many famous scientists such as :wiki:`Sir Newton <Isaac_Newton>`, :wiki:`Lagrange <Joseph-Louis_Lagrange>`, and :wiki:`Sir Hamilton <William_Rowan_Hamilton>`.
+Here the word ':wiki:`mechanics <Mechanics>`' refers to how things evolve with respect to time.
+For example, Newton's second law is a central piece of classical mechanics:
 
 .. math:: \mathbf F = m \mathbf a
 
-Quantum mechanics was motivated by a few experimental observations that cannot be explained in :wiki:`classical mechanics <Classical_mechanics>`.
-It is difficult to explain to a non-physicist because its features are beyond a regular person's daily experience.
+Overall, classical mechanics excels at describing phenomena of our daily experience, but fails at
 
-In my understanding, the name 'quantum' means 'discrete' (or linear algebra) and the name 'classical' means 'continuous' (or calculus).
-There are two ways I can think of to make a system quantum-mechanical:
+* very small things such as molecules or atoms
+* very cold things even if they are big
 
-* divide things to smaller and smaller pieces
-* cool things down towards :wiki:`absolute zero degree <Absolute_zero>`
+Historically quantum mechanics was motivated by a few experimental observations that cannot be explained with :wiki:`classical mechanics <Classical_mechanics>`.
+The foundations of :wiki:`quantum mechanics <Quantum_mechanics>` was laid down between late 19th century and early 20th century by many famous scientists such :wiki:`Heisenberg <Werner_Heisenberg>`, :wiki:`Schrödinger <Erwin_Schrödinger>`, :wiki:`von Neumann <John_von_Neumann>`, :wiki:`Einstein <Albert_Einstein>`, :wiki:`Dirac <Paul_Dirac>`, :wiki:`Bohr <Niels_Bohr>` etc.
 
-In a very simplified view, measurement on the big piece (or hot piece) gives a continuous range of values but that on the small piece (or cold piece) gives discrete values.
+**In a very simplified view, measurement of some physical quantity on a big (and/or warm) object gives a continuous range of possible values but that on a small (and/or cold) object gives a few possible values.**
+This is what the name 'quantum' refers to.
+For example, the so-called :wiki:`rheostat <Potentiometer#Rheostat>` is an electric device of varying resistance by varying the length of some resistive material. Since length is a continuous variable, it appears that one can get any resistance by sliding the contact.
+
+It is difficult theory because many of its features are beyond a person's daily experience.
+
+Although quantum mechanics has a wider domain of applicability, it is not used when classical mechanics suffices.
+This is because of its computation complexity increases rapidly as the number of objects under study (i.e., degrees of freedom) increases.
+There is a correspondence principle, which states that under certain limit, result from quantum mechanics should approach result from classical mechanics.
+
+analogy of coin tossing
+-----------------------
+
+Each coin toss has two outcomes and their probabilities can be described by a two-component vector :math:`\mathbf p`.
+For example, fair coins have
+
+.. math:: \mathbf p = \begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix}
+
+Given such probability vectors, we can easily describe tossing of the same coin many times, or many coins with different biases.
+We will focus on the second situation since it is more general.
+Take two coins for example, the outcome probability is given by the `tensor product <https://en.wikipedia.org/wiki/Tensor_product>`_ of the individual probability vectors, i.e.,
+
+.. math:: \mathbf p = \mathbf p_1 \otimes \mathbf p_2 \equiv \begin{bmatrix} p_{1H}\mathbf p_2 \\ p_{1T}\mathbf p_2 \end{bmatrix} = \begin{bmatrix} p_{1H}p_{2H} \\ p_{1H}p_{2T} \\ p_{1T}p_{2H} \\ p_{1T}p_{2T} \end{bmatrix}
+
+With :math:`N` different coins, the probabilities can be calculated from :math:`2N` numbers.
+This is the product rule of probability since we assume the coin tosses are independent events.
+
+To make the situation more complicated, there are two ways to go:
+
+1. make the coin tosses dependent events: maybe they hit each other as they are tossed (instead of being tossed one by one)
+#. make the probability distribution time-dependent: maybe they are being melted
+
+The first complication breaks the product rule and we have to assign one probability to each outcome.
+In the two-coin example,
+
+.. math:: \mathbf p = \begin{bmatrix} p_{1H,2H} \\ p_{1H,2T} \\ p_{1T,2H} \\ p_{1T,2T} \end{bmatrix}
+
+With :math:`N` coins, there are :math:`2^N` outcomes.
+
+The second complication adds dynamics to the probabilities distributions.
+The simplest description one can give may be the :wiki:`Kolmogorov equation <Master_equation>`:
+
+:math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`
+
+where :math:`R` is a :wiki:`transition rate matrix <Transition_rate_matrix>`.
 
 
-* Paul Dirac, The Principles of Quantum Mechanics, Oxford University Press (1930)
+The description of quantum systems and their dynamics are very similar to that of stochastic processes.
 
+:wiki:`Schrödinger <Erwin_Schrödinger>`
+
++------------+--------------------------------------------------+-------------------------------------------------------------+
+|            | stochastic process                               |     quantum mechanics                                       |
++============+==================================================+=============================================================+
+|state vector|  probabilities  :math:`\mathbf p(t)`             | probability amplitudes :math:`\mathbf c(t)`                 |
++------------+--------------------------------------------------+-------------------------------------------------------------+
+|            | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
+|dynamics    |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\hbar\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`|
++------------+--------------------------------------------------+-------------------------------------------------------------+
+
+
+
+In general, both :math:`R` and :math:`H` can be time-dependent.
 
 Quantum bits (qubits)
 =====================
 
-A qubit is a quantum two-level system, which means if you measure it in some way, you get at most two possible results.
+A qubit is a quantum two-level system. It is an abstract concept with all hardware implementation details hidden, just like its classical counterpart :wiki:`bit <Bit>`.
+
+which means measurement gives two potential results.
 In that sense, it is similar to coin tossing.
-In this document, we will be only talking about qubit in pure state.
-Given the pure-state assumption, a qubit can be described by
+In this document, we will be only talking about qubit in pure state, with the parametrization
 
 .. math:: \left|\psi\right> = \alpha\left|0\right> + \beta\left|1\right>
 
@@ -83,12 +134,29 @@ Measurements
 
 von Neumann measurement
 
+quantum no-clone theorem
+------------------------
+
+It is impossible to copy an unknown quantum state.
+
+quantum teleportation
+---------------------
 
 Quantum gates
 =============
 
 one-qubit gates
 ---------------
+
+:wiki:`Hadamard gate <Hadamard_transform>`
+
+.. math::
+
+    H = \frac{1}{\sqrt 2}\begin{bmatrix}
+    1& 1 \\
+    1& -1
+    \end{bmatrix}.
+
 
 two-qubit gates
 ---------------
@@ -120,8 +188,6 @@ For classical bits, the input to this CNOT gate can only be one of the four unit
     \end{bmatrix}
 
 
-Hadamard gate
-  T
 
 Ancilla qubits and classical logic gates
 ========================================
@@ -252,7 +318,7 @@ With some extra resources, it becomes possible, and it is exactly the aim of pha
 The three extra resources in phase kickback are
 
 * an extra qubit, commonly known as ancilla (the latin word for 'maid') qubit
-* a way to do [Hadamard gate][h] on the ancilla qubit
+* a way to do :wiki:`Hadamard gate <Hadamard_transform>` on the ancilla qubit
 * a way to do controlled-unitary gate on the two qubits
 
 In the more general case where :math:`U` acts on multiple qubits, more ancilla qubits may be needed.
@@ -281,13 +347,6 @@ One can easily verify the resultant state as
     C(U) H\otimes I\left|0\right>\left|\psi\right> =\frac{\left|0\right>+e^{i\phi}\left|1\right>}{\sqrt 2}\left|\psi\right>
 
 where :math:`I` is the identity matrix, :math:`\otimes` is the :wiki:`tensor product operation <Tensor_product>`, and the one-qubit :wiki:`Hadamard gate <Hadamard_transform>` is 
-
-.. math::
-
-    H = \frac{1}{\sqrt 2}\begin{bmatrix}
-    1& 1 \\
-    1& -1
-    \end{bmatrix}.
 
 Note that the overall effect is to add a phase shift to the control (ancilla) qubit.
 This is opposite to the common sense that the control bit remains intact and the controlled bit changes.
