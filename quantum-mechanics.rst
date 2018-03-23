@@ -2,14 +2,17 @@
 Quantum mechanics
 *****************
 
-This chapter is about the physics background needed for quantum computing.
-The good news is that not much physics is needed as long as we do not worry about hardware implementations (superconducting circuits, quantum optics, nuclear magnetic resonance, etc).
+This chapter is about the physics background needed for the whole document.
+Fortunately, as long as we do not worry about hardware implementations (superconducting circuits, quantum optics, nuclear magnetic resonance, etc), not much physics knowledge is needed.
+
 Specifically, the shortcuts we take include
 
-1. Only :wiki:`quantum two level systems, i.e., qubits <Qubit>` are considered.
-#. Coin tossing is used as analogy/comparison for measurements on qubits.
-#. All unitary operations are assumed to be efficiently implemented on hardware.
-#. All quantum gates have perfect fidelities, i.e., no :wiki:`decoherence <Quantum_decoherence>`.
+1. Only :wiki:`quantum two level systems, i.e., qubits <Qubit>`, are considered.
+#. Coin tossing is used as analogy/comparison for qubit measurements.
+#. All unitary operations are assumed to be efficiently implementable on hardware.
+#. :wiki:`Decoherence <Quantum_decoherence>` does not exist, i.e., all quantum gates have perfect fidelities and all quantum states do not degrade.
+
+We will expand on these simplifications in the :ref:`chapter-next` chapter.
 
 .. _Bernoulli distribution: https://en.wikipedia.org/wiki/Bernoulli_distribution
 .. _binomial distribution: https://en.wikipedia.org/wiki/Binomial_distribution
@@ -17,16 +20,45 @@ Specifically, the shortcuts we take include
 Quantum mechanics in a nutshell
 ===============================
 
-The predecessor of quantum mechanics, the so-called :wiki:`classical mechanics <Classical_mechanics>` was developed between 17th and 19th century by many famous scientists such as :wiki:`Sir Newton <Isaac_Newton>`, :wiki:`Lagrange <Joseph-Louis_Lagrange>`, and :wiki:`Sir Hamilton <William_Rowan_Hamilton>`.
-Here the word ':wiki:`mechanics <Mechanics>`' refers to how things evolve with respect to time.
-For example, Newton's second law is a central piece of classical mechanics:
+The predecessor of quantum mechanics is called :wiki:`classical mechanics <Classical_mechanics>`, which was developed between 17th and 19th century.
+Here the word ':wiki:`mechanics <Mechanics>`' refers to the time evolution of things.
+Beside some formality put in by :wiki:`Lagrange <Joseph-Louis_Lagrange>` and :wiki:`Sir Hamilton <William_Rowan_Hamilton>`,
+classical mechanics is essentially :wiki:`Sir Newton <Isaac_Newton>`'s second law:
 
 .. math:: \mathbf F = m \mathbf a
 
 Overall, classical mechanics excels at describing phenomena of our daily experience, but fails at
 
-* very small things such as molecules or atoms
+* very small things such as molecules and atoms
 * very cold things even if they are big
+
+One good example is :wiki:`the double-slit experiment <Double-slit_experiment>`, shown in :numref:`double-slit`.
+Here we throw electrons to the middle wall with two slits and observe their landing locations on the back screen.
+If electrons were to follow classical trajectories, we would observe two landing stripes right behind the slits.
+However, we see the same :wiki:`interference pattern <Interference_(wave_propagation)>` as in optics, i.e., electrons are like waves.
+
+On the other hand, electrons also behave like particles.
+For example, if we keep lowering the intensity of the :wiki:`electron beam gun <Electron_gun>`,
+we can observe the landing of each electron on the back screen.
+
+.. _double-slit:
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/c/cd/Double-slit.svg
+
+   Double-split experiment of electrons.
+
+This strange property of electrons, known as :wiki:`wave-particle duality <Wave–particle_duality>`, is common to small things.
+
+There is a :wiki:`correspondence principle <Correspondence_principle>`,
+which states that under certain limit, predictions from quantum mechanics should approach result from classical mechanics.
+
+.. seealso::
+   There is some weirdness in the electron intereference. In optics, the standard 
+   interpretation of the interference pattern is that the light beam going through
+   the top slit interferes with the light beam going through the bottom slit.
+   The electrons, however, can be thrown onto the middle wall one by one, and
+   interference pattern is still observed. There are two equally crazy viewpoint
+   on it: either each electron is interfering with itself in a parallel universe,
+   or the two potential paths are interfering.
 
 Historically quantum mechanics was motivated by a few experimental observations that cannot be explained with :wiki:`classical mechanics <Classical_mechanics>`.
 The foundations of :wiki:`quantum mechanics <Quantum_mechanics>` was laid down between late 19th century and early 20th century by many famous scientists such :wiki:`Heisenberg <Werner_Heisenberg>`, :wiki:`Schrödinger <Erwin_Schrödinger>`, :wiki:`von Neumann <John_von_Neumann>`, :wiki:`Einstein <Albert_Einstein>`, :wiki:`Dirac <Paul_Dirac>`, :wiki:`Bohr <Niels_Bohr>` etc.
@@ -39,7 +71,9 @@ It is difficult theory because many of its features are beyond a person's daily 
 
 Although quantum mechanics has a wider domain of applicability, it is not used when classical mechanics suffices.
 This is because of its computation complexity increases rapidly as the number of objects under study (i.e., degrees of freedom) increases.
-There is a correspondence principle, which states that under certain limit, result from quantum mechanics should approach result from classical mechanics.
+
+* probabilistic theory
+* dynamics
 
 analogy of coin tossing
 -----------------------
@@ -82,14 +116,16 @@ The description of quantum systems and their dynamics are very similar to that o
 
 :wiki:`Schrödinger <Erwin_Schrödinger>`
 
-+------------+--------------------------------------------------+-------------------------------------------------------------+
-|            | stochastic process                               |     quantum mechanics                                       |
-+============+==================================================+=============================================================+
-|state vector|  probabilities  :math:`\mathbf p(t)`             | probability amplitudes :math:`\mathbf c(t)`                 |
-+------------+--------------------------------------------------+-------------------------------------------------------------+
-|            | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
-|dynamics    |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\hbar\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`|
-+------------+--------------------------------------------------+-------------------------------------------------------------+
+.. table:: Comparison of stochastic process and 
+
+    +------------+--------------------------------------------------+-------------------------------------------------------------+
+    |            | stochastic process                               |     quantum mechanics                                       |
+    +============+==================================================+=============================================================+
+    |state vector|  probabilities  :math:`\mathbf p(t)`             | probability amplitudes :math:`\mathbf c(t)`                 |
+    +------------+--------------------------------------------------+-------------------------------------------------------------+
+    |            | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
+    |dynamics    |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\hbar\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`|
+    +------------+--------------------------------------------------+-------------------------------------------------------------+
 
 
 
@@ -111,7 +147,9 @@ where :math:`\alpha`, :math:`\beta\in \mathbb{C}` and :math:`|\alpha|^2 + |\beta
 :wiki:`Bloch sphere <Bloch_sphere>`
 
 
-.. image:: https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg
+
+   Bloch sphere
 
 on the sphere
 \alpha \beta sum 1 is equivalent to r = 1
@@ -132,7 +170,10 @@ entanglement
 Measurements
 ============
 
-von Neumann measurement
+There is essentially only one type of measurement in quantum mechanics: the so-called :wiki:`von Neumann measurement <>`,
+which is the equivalent of drawing one sample from a probability distribution.
+
+.. math:: \left<\psi\right| A \left|\psi\right>
 
 quantum no-clone theorem
 ------------------------
@@ -289,6 +330,9 @@ Here the reversibility/unitariness of the gate is explicitly taken care of by th
 In real computations we can always set :math:`y=0` then the last bit is simply the output :math:`f(x)`.
 Applying this recipe to the AND gate, you will get Toffoli gate.
 
+
+This trick is often called Controlled-f gate.
+
 * D. Deutsch, Quantum theory, the Church-Turing principle and the universal quantum computer, Proc. R. Soc. London A 400, 97 (1985)
 
 Phase kickback
@@ -376,7 +420,7 @@ The most straightforward one is to generate many copies of this state, and keep 
     \left<\sigma_y\right> = \sin\phi, \quad
     \left<\sigma_z\right> = 0
 
-where :math:`\sigma_i`'s are the `Pauli matrices <Pauli_matrices>`.
+where :math:`\sigma_i`'s are the :wiki:`Pauli matrices <Pauli_matrices>`.
 This is basically the :wiki:`Bloch sphere representation <Bloch_sphere>` of quantum two-level systems.
 Thus in principle :math:`\phi` can be determined as accurate as one wishes.
 However, it is not efficient to estimate :math:`\phi` this way (unless in special situations, say :math:`\phi` is known to be one of a few possible values) due to the cost of generating the copies.
@@ -386,6 +430,3 @@ It turns out that **many quantum algorithms boil down to somehow encode the answ
 with the help of controlled-unitary gates**.
 Thus it is very helpful to think in this phase kickback framework.
 
-
-Decoherence
-===========

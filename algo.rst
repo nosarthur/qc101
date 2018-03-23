@@ -73,3 +73,6 @@ Phase estimation algorithm (PEA)
 
 Quantum Approximate Optimization Algorithm (QAOA)
 =================================================
+
+Quantum random walk
+===================

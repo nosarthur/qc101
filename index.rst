@@ -6,8 +6,11 @@
 Quantum computing 101 for non-physicists
 ========================================
 
-The goal of this document is to provide a gentle introduction to quantum computing for someone with technical background but not physics background.
-It is assumed that the reader is familiar with
+This is a gentle introduction to quantum computing for someone with technical background but not physics background.
+Specifically, I hope to get the readers familiar with the jargons in this field.
+Thus links to Wikipedia are provided.
+
+The reader is assumed to be familiar with
 
 * linear algebra
 * probability theory
@@ -16,9 +19,20 @@ The principles I follow in preparing this material are
 
 * Concise is better than verbose.
 * Concrete is better than abstract.
+* Goal-oriented is better than aimless
 * Self-contained is better than cross-referencing.
 
+In my experience, making analogy is very helpful in learning new things.
+Thus I will use it whenever possible.
+
 Choices of the materials are biased to my interest.
+Please email me if you find errors in the document: zhou.dong@gmail.com
+
+
+.. seealso::
+   I will use these boxes to include information that is not essential to this
+   document, but too interesting to dismiss.
+
 
 .. toctree::
    :maxdepth: 2
@@ -28,4 +42,4 @@ Choices of the materials are biased to my interest.
    motives
    information
    algo
-   hardwares
+   next

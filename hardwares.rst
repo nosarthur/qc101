@@ -1,7 +1,0 @@
-*********
-Hardwares
-*********
-
-
-superconducting
-===============
