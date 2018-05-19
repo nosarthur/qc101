@@ -19,8 +19,8 @@ The principles I follow in preparing this material are
 
 * Concise is better than verbose.
 * Concrete is better than abstract.
-* Goal-oriented is better than aimless
-* Self-contained is better than cross-referencing.
+* Task-oriented is better than rambling.
+* Comprehensive is better than referencing.
 
 In my experience, making analogy is very helpful in learning new things.
 Thus I will use it whenever possible.
