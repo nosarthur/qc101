@@ -1,0 +1,9 @@
+*******************
+Quantum decoherence
+*******************
+
+At high-level, quantum decoherence 
+
+
+* classical noise
+* quantum noise
