@@ -48,7 +48,9 @@ or simply create a pull request on GitHub with your revision.
    :caption: Contents:
 
    overview
+   qm-nutshell
    quantum-mechanics
+   qubit
    gate-and-circuit
    input
    output

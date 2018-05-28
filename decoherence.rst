@@ -1,6 +1,6 @@
-*******************
-Quantum decoherence
-*******************
+***********
+Decoherence
+***********
 
 At high-level, quantum decoherence 
 

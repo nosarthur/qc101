@@ -11,27 +11,6 @@ In this chapter, we will focus on two questions:
 
    The future is already here -- it's just not very evenly distributed.   --- :wiki:`William Gibson<William_Gibson>`
 
-classical computer
-==================
-
-A classical computer has the following components:
-
-* processor
-* memory
-* input device
-* output device
-
-This layout is known as the :wiki:`Von Neumann architecture <Von_Neumann_architecture>`
-
-software part
-
-* underlying physical processes
-* logic gate
-* :wiki:`machine code <Machine_code>`
-* :wiki:`assembly language<Assembly_language>`
-* higher-level languages
-
-
 motivations of quantum computing
 ================================
 
@@ -97,3 +76,28 @@ Quantum supremacy
 Although there are still controversies on whether this supremacy happens at 50
 qubits, it definitely gives strong incentives for the tech companies to make
 50-qubit devices.
+
+
+classical computer
+==================
+
+A classical computer has the following components:
+
+* processor
+* memory
+* input device
+* output device
+
+This layout is known as the :wiki:`Von Neumann architecture <Von_Neumann_architecture>`
+
+software part
+
+* underlying physical processes
+* logic gate
+* :wiki:`machine code <Machine_code>`
+* :wiki:`assembly language<Assembly_language>`
+* higher-level languages
+
+For quantum computers,
+
+

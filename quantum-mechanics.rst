@@ -1,6 +1,6 @@
-*****************
-Quantum mechanics
-*****************
+*******************************
+Quantum mechanics in a Nutshell
+*******************************
 
 .. _Bernoulli distribution: https://en.wikipedia.org/wiki/Bernoulli_distribution
 .. _binomial distribution: https://en.wikipedia.org/wiki/Binomial_distribution
@@ -24,7 +24,6 @@ Here the word ':wiki:`mechanics <Mechanics>`' refers to the time evolution of th
 Beside some formality put in by :wiki:`Lagrange <Joseph-Louis_Lagrange>` and :wiki:`Sir Hamilton <William_Rowan_Hamilton>`,
 classical mechanics is essentially :wiki:`Sir Newton <Isaac_Newton>`'s second law:
 
-.. math:: \mathbf F = m \mathbf a
 
 Overall, classical mechanics excels at describing phenomena of our daily experience, but fails at
 
@@ -73,113 +72,5 @@ This is because of its computation complexity increases rapidly as the number of
 
 * probabilistic theory
 * dynamics
-
-analogy of coin tossing
------------------------
-
-Each coin toss has two outcomes and their probabilities can be described by a two-component vector :math:`\mathbf p`.
-For example, fair coins have
-
-.. math:: \mathbf p = \begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix}
-
-Given such probability vectors, we can easily describe tossing of the same coin many times, or many coins with different biases.
-We will focus on the second situation since it is more general.
-Take two coins for example, the outcome probability is given by the `tensor product <https://en.wikipedia.org/wiki/Tensor_product>`_ of the individual probability vectors, i.e.,
-
-.. math:: \mathbf p = \mathbf p_1 \otimes \mathbf p_2 \equiv \begin{bmatrix} p_{1H}\mathbf p_2 \\ p_{1T}\mathbf p_2 \end{bmatrix} = \begin{bmatrix} p_{1H}p_{2H} \\ p_{1H}p_{2T} \\ p_{1T}p_{2H} \\ p_{1T}p_{2T} \end{bmatrix}
-
-With :math:`N` different coins, the probabilities can be calculated from :math:`2N` numbers.
-This is the product rule of probability since we assume the coin tosses are independent events.
-
-To make the situation more complicated, there are two ways to go:
-
-1. make the coin tosses dependent events: maybe they hit each other as they are tossed (instead of being tossed one by one)
-#. make the probability distribution time-dependent: maybe they are being melted
-
-The first complication breaks the product rule and we have to assign one probability to each outcome.
-In the two-coin example,
-
-.. math:: \mathbf p = \begin{bmatrix} p_{1H,2H} \\ p_{1H,2T} \\ p_{1T,2H} \\ p_{1T,2T} \end{bmatrix}
-
-With :math:`N` coins, there are :math:`2^N` outcomes.
-
-The second complication adds dynamics to the probabilities distributions.
-The simplest description one can give may be the :wiki:`Kolmogorov equation <Master_equation>`:
-
-:math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`
-
-where :math:`R` is a :wiki:`transition rate matrix <Transition_rate_matrix>`.
-
-
-The description of quantum systems and their dynamics are very similar to that of stochastic processes.
-
-:wiki:`Schrödinger <Erwin_Schrödinger>`
-
-.. table:: Comparison of stochastic process and 
-
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-    |            | stochastic process                               |     quantum mechanics                                       |
-    +============+==================================================+=============================================================+
-    |state vector|  probabilities  :math:`\mathbf p(t)`             | probability amplitudes :math:`\mathbf c(t)`                 |
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-    |            | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
-    |dynamics    |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\hbar\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`|
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-
-
-
-In general, both :math:`R` and :math:`H` can be time-dependent.
-
-Quantum bits (qubits)
-=====================
-
-A qubit is a quantum two-level system. It is an abstract concept with all hardware implementation details hidden, just like its classical counterpart :wiki:`bit <Bit>`.
-
-which means measurement gives two potential results.
-In that sense, it is similar to coin tossing.
-In this document, we will be only talking about qubit in pure state, with the parametrization
-
-.. math:: \left|\psi\right> = \alpha\left|0\right> + \beta\left|1\right>
-
-where :math:`\alpha`, :math:`\beta\in \mathbb{C}` and :math:`|\alpha|^2 + |\beta|^2 = 1`.
-
-:wiki:`Bloch sphere <Bloch_sphere>`
-
-
-.. figure:: https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg
-
-   Bloch sphere
-
-on the sphere
-\alpha \beta sum 1 is equivalent to r = 1
-
-
-Superposition principle
-=======================
-
-
-Schrodinger's cat
-
-
-entanglement
-------------
-
-
-
-Measurements
-============
-
-There is essentially only one type of measurement in quantum mechanics: the so-called :wiki:`von Neumann measurement <>`,
-which is the equivalent of drawing one sample from a probability distribution.
-
-.. math:: \left<\psi\right| A \left|\psi\right>
-
-quantum no-clone theorem
-------------------------
-
-It is impossible to copy an unknown quantum state.
-
-quantum teleportation
----------------------
 
 
