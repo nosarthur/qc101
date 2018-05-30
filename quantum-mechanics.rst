@@ -5,9 +5,6 @@ Quantum mechanics in a Nutshell
 .. _Bernoulli distribution: https://en.wikipedia.org/wiki/Bernoulli_distribution
 .. _binomial distribution: https://en.wikipedia.org/wiki/Binomial_distribution
 
-This chapter is about the physics background needed for the whole document.
-Fortunately, as long as we do not worry about hardware implementations (superconducting circuits, quantum optics, nuclear magnetic resonance, etc), not much physics knowledge is needed.
-
 Specifically, the shortcuts we take include
 
 1. Only :wiki:`quantum two level systems, i.e., qubits <Qubit>`, are considered.
