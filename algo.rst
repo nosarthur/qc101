@@ -59,15 +59,34 @@ In the quantum computing framework, the equivalent procedure is to first apply [
 Admittedly, Deutch algorithm is quite artificial.
 But it opens up the possibility of exponential speedup on quantum computers.
 
-Quantum Fourier transform (QFT)
-===============================
-
-
-Discrete Fourier transform (DFT)
---------------------------------
-
 Phase estimation algorithm (PEA)
 ================================
+
+In special occasions, the exponential speedup materializes.
+It happens when the answer corresponds to one of the QFT basis states.
+Then the application of QFT followed by a measurement can tell us the answer.
+This is the main idea of the :wiki:`quantum phase estimation algorithm` (PEA),
+a quantum algorithm for eigenvalues and eigenvectors.
+
+A simplified version of it can be stated as follows.
+Suppose we are given an eigenstate of a unitary gate/operator satisfying
+
+.. math:: U\left|\psi\right> = e^{i\phi}\left|\psi\right>
+
+where :math:`\phi` is guaranteed to be smaller than :wiki:`2\pi`, estimate :math:`\phi`.
+
+For now, let's assume that :math:`\phi` happens to be :math:`\omega_N^k` with
+an unknown :math:`k` (here we assume we somehow know :math:`N` and again :math:`N=2^n`).
+Then we can use controlled-:math:`U` gates and :math:`N` ancilla qubits to do the :ref:`phase kickback` trick with the output state
+
+.. math:: \prod_{j=0}^{n-1}\otimes\left(\left|0\right>+\omega_{N}^{jk}\left|1\right>\right)
+
+In other words, we can transform it to be one of the QFT basis states and the unknown value $$k$$ is exactly the row index.
+Then it only takes a QFT transformation and one measurement to reveal :math:`k`. 
+
+What if :math:`\phi` is not :math:`\omega_N^k`? A moment of reflection will show that
+the aforementioned protocol produces the best :math:`N`-bit approximation of :math:`\phi`
+(in this case one also needs to repeat this protocol several times to be sure).
 
 
 

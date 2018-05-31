@@ -41,6 +41,7 @@ release = '0.1'
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.extlinks',
+    'sphinx.ext.autosectionlabel',
 ]
 
 extlinks = {'wiki': ('https://en.wikipedia.org/wiki/%s', '')}

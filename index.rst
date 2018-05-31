@@ -59,11 +59,10 @@ or simply create a pull request on GitHub with your revision.
 
    overview
    qm-nutshell
-   quantum-mechanics
    qubit
+   entanglement
    gate-and-circuit
    state-prep
    readout
-   decoherence
-   information
    algo
+   decoherence

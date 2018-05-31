@@ -158,8 +158,5 @@ Applying this recipe to the AND gate, you will get Toffoli gate.
 
 This trick is often called Controlled-f gate.
 
-* D. Deutsch, Quantum theory, the Church-Turing principle and the universal quantum computer, Proc. R. Soc. London A 400, 97 (1985)
-
-
 emulate logic gates
 ===================

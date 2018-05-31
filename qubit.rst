@@ -28,12 +28,8 @@ on the sphere
 \alpha \beta sum 1 is equivalent to r = 1
 
 
-tensor product
---------------
-
 time evolution
 --------------
-
 
 .. math:: \left|\psi(t)\right> = e^{-iHt}\left|\psi(0)\right>
 
