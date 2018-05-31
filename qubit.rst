@@ -2,10 +2,11 @@
 Quantum bit (qubit)
 *******************
 
-A qubit is a quantum two-level system. It is an abstract concept with all hardware implementation details hidden, just like its classical counterpart :wiki:`bit <Bit>`.
+A qubit is a quantum object with two states.
+It is an abstraction with all hardware implementation details hidden,
+just like its classical counterpart :wiki:`bit <Bit>`.
+To be concrete, one can think of the two qubit states to be two states of an atom.
 
-which means measurement gives two potential results.
-In that sense, it is similar to coin tossing.
 In this document, we will be only talking about qubit in pure state, with the parametrization
 
 .. math:: \left|\psi\right> = \alpha\left|0\right> + \beta\left|1\right>

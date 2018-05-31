@@ -62,8 +62,8 @@ or simply create a pull request on GitHub with your revision.
    quantum-mechanics
    qubit
    gate-and-circuit
-   input
-   output
+   state-prep
+   readout
    decoherence
    information
    algo
