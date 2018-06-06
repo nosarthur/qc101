@@ -20,15 +20,17 @@ With the effort of many physicists, quantum mechanics was established in early 2
 It is intrinsically a probabilistic theory and is considered bizarre even by the experts.
 Yet it is a successful theory that seems to have no reported failures on experimental observations.
 
-Overall, its difference from classical mechanics can be summarized as
+Overall, its difference from classical mechanics can be summarized as follows
 
-#. Possible states are finite.
+#. State space could be finite.
 #. Superposition of different states is allowed.
 #. Measurement collapses superposition.
 #. Dynamics (i.e., transitions between possible states) is probabilistic.
 
+To be concrete, I will use atom as the prototypical quantum object.
+
 absorption spectrum
--------------------
+===================
 
 To illustrate the first difference, let's revisit
 :wiki:`Newton's prism experiment originally recorded in the 17'th century <Prism>`,
@@ -60,7 +62,7 @@ proposed by :wiki:`Max Plank` in 1900 and known as :wiki:`Plank's law`.
 It can also be used to estimate the temperature of a light bulb, or human body.
 In fact, the derivation of Plank's law requires quantum mechanics,
 and it is one of the pioneering work to demonstrate the validity of quantum mechanics.
-Classical physics actually gives a non-sensible result in this case,
+Classical physics gives a non-sensible result in this case,
 commonly known as the :wiki:`ultraviolet catastrophe` of :wiki:`black-body radiation` (here black-body simply means a hot object).
 It predicts that the light intensity approaches infinite at high frequency, for any temperature of the object.
 
@@ -74,7 +76,7 @@ causing deviations to Plank's formula.
 Interestingly, these absorption lines happens at special frequencies.
 In fact, they are characteristic of the material.
 For example, the lines for iron and the lines of oxygen molecules look nothing like each other.
-Thus by looking at these lines, we can tell the composition of the Sun and even their abundance.
+Thus by looking at these lines, we can deduce the composition of the Sun and even their abundance.
 
 .. _Fraunhofer-lines:
 .. figure:: https://upload.wikimedia.org/wikipedia/commons/2/2f/Fraunhofer_lines.svg
@@ -88,7 +90,7 @@ It was puzzling to the 19'th century classical physicists how an atom could only
 By that time, physicists already knew that atoms are made of nucleus with positive charge and electrons with negative charge.
 If one makes the analogy that nucleus is the Sun, an electron is a planet,
 and the attractive force between positive and negative charges plays the role of
-gravitational attraction, it is still unclear why only a finite number of stable orbits can exist.
+gravitational attraction, it is unclear why only a finite number of stable orbits exist.
 Again the full explanation require quantum mechanics.
 
 .. seealso::
@@ -110,7 +112,7 @@ As a result, quantum theory is bizarre.
 
 
 analogy of coin tossing
------------------------
+=======================
 
 Quantum mechanics is intrinsically a probabilistic theory,
 that is, if one repeats an experimental procedure in an idealized situation
@@ -118,19 +120,24 @@ that is, if one repeats an experimental procedure in an idealized situation
 the measurement results could still differ from different trials.
 At a superficial level, it is similar to probability theory where some information is not available.
 
+The simplest quantum sysytem has two states and the classical analogy is a coin with two sides.
+A coin toss has two outcomes: head and tail, and is represented by :wiki:`Bernoulli distribution`:
+
+.. math:: \mathbf p = \begin{bmatrix} p_H \\ p_T \end{bmatrix}, \text{ with } p_H + p_T = 1.
 
 Each coin toss has two outcomes and their probabilities can be described by a two-component vector :math:`\mathbf p`.
 For example, fair coins have
 
 .. math:: \mathbf p = \begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix}
 
-Given such probability vectors, we can easily describe tossing of the same coin many times, or many coins with different biases.
-We will focus on the second situation since it is more general.
-Take two coins for example, the outcome probability is given by the `tensor product <https://en.wikipedia.org/wiki/Tensor_product>`_ of the individual probability vectors, i.e.,
+Given such probability vectors, we can easily describe the tossing of the same coin many times,
+or more generally, the tossing of many coins with different biases.
+Take two coins for example, the outcome probability is given by the :wiki:`tensor product` of the individual probability vectors, i.e.,
 
 .. math:: \mathbf p = \mathbf p_1 \otimes \mathbf p_2 \equiv \begin{bmatrix} p_{1H}\mathbf p_2 \\ p_{1T}\mathbf p_2 \end{bmatrix} = \begin{bmatrix} p_{1H}p_{2H} \\ p_{1H}p_{2T} \\ p_{1T}p_{2H} \\ p_{1T}p_{2T} \end{bmatrix}
 
-With :math:`N` different coins, the probabilities can be calculated from :math:`2N` numbers.
+With :math:`n` different coins, there are :math:`2^n` possible states.
+However, the probabilities can be calculated from :math:`2n` numbers.
 This is the product rule of probability since we assume the coin tosses are independent events.
 
 To make the situation more complicated, there are two ways to go:
@@ -143,7 +150,7 @@ In the two-coin example,
 
 .. math:: \mathbf p = \begin{bmatrix} p_{1H,2H} \\ p_{1H,2T} \\ p_{1T,2H} \\ p_{1T,2T} \end{bmatrix}
 
-With :math:`N` coins, there are :math:`2^N` outcomes.
+and no decomposition is possible anymore.
 
 The second complication adds dynamics to the probabilities distributions.
 The simplest description one can give may be the :wiki:`Kolmogorov equation <Master_equation>`:
@@ -156,30 +163,76 @@ Then we have a formal solution
 
 :math:`\mathbf p(t) = e^{Rt}\mathbf p(0).`
 
+'quantum' coin tossing
+======================
+
 The description of quantum systems and their dynamics are very similar to that of stochastic processes.
+
+If we magically force a coin to obey quantum mechanics,
+the mathematics to describe the coin will change quite dramatically.
+The state of the quantum coin is described by a 2D complex vector
+
+.. math:: \left|\psi\right> = c_H\left|H\right> + c_T\left|T\right>
+
+where :math:`c_H, c_T\in \mathbb{C}` and they are called probability amplitudes.
+:math:`\|c_H\|^2` denotes the probability of getting head as the outcome.
+Thus probability sums to 1 requires :math:`\|c_H\|^2 + \|c_T\|^2 = 1`.
+Here the half bracket notation is called the :wiki:`Dirac notation<Bra-ket_notation>`.
+In this example, they correspond to 2D vectors:
+
+.. math:: \left|H\right> = \begin{bmatrix} 1 \\ 0\end{bmatrix}, 
+          \left|T\right> = \begin{bmatrix} 0 \\ 1\end{bmatrix}, 
+          \left|\psi\right> \equiv \mathbf c = \begin{bmatrix} c_H \\ c_T\end{bmatrix}. 
+
+These states with right bracket are called ket(s).
+:wiki:`Paul Dirac` also defined the complex conjugate of these vectors
+
+.. math:: \left<\psi\right| \equiv \mathbf c^\dagger = \begin{bmatrix} c_H^* & c_T^*\end{bmatrix}. 
+
+Such states with left bracket are called bra(s).
+And overall Dirac notation is also called bra-ket notation.
+With this notation, probability normalization can be written succinctly as
+
+.. math:: \left<\psi|\psi\right> = 1
+
+One could argue that it is not really more convenient than :math:`\mathbf c^\dagger \mathbf c=1`,
+which I agree.
+I think its power is slightly more evident when there are uncountable infinite possible states.
+In the end, it is just a notation that physicists are used to.
+
+If we identify :math:`p_i = c_i^*c_i`, then it appears the quantum coin maps to the classical coin exactly.
+Now if we have multiple quantum coins, their state vector is also tensor product of the individual ones.
+Take two coin case for example,
+
+.. math:: \left|\psi\right> = \left|\psi_1\right> \otimes \left|\psi_2\right> = 
+
+
+
 A side-by-side comparison of quantum mechanics and stochastic processes is shown in :numref:`qm-sp`.
 
 .. _qm-sp:
 .. table:: Comparison of stochastic process and quantum mechanics
 
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-    |            | stochastic process                               |     quantum mechanics                                       |
-    +============+==================================================+=============================================================+
-    |state vector|  probabilities  :math:`\mathbf p(t)`             | probability amplitudes :math:`\mathbf c(t)`                 |
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-    |            | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
-    |dynamics    |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`     |
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
-    |solution    |:math:`\mathbf p(t) = e^{Rt}\mathbf p(0)`         |:math:`\mathbf c(t)=e^{-iHt}\mathbf c(0)`                    |
-    +------------+--------------------------------------------------+-------------------------------------------------------------+
+    +---------------+--------------------------------------------------+-------------------------------------------------------------+
+    |               | stochastic process                               |     quantum mechanics                                       |
+    +===============+==================================================+=============================================================+
+    |state vector   |  probabilities  :math:`\mathbf p`                | probability amplitudes :math:`\mathbf c`                    |
+    +---------------+--------------------------------------------------+-------------------------------------------------------------+
+    |normailization |      :math:`\|\mathbf p\|_1 = 1`                 | :math:`\mathbf c^\dagger \mathbf c   =1`                    |
+    +---------------+--------------------------------------------------+-------------------------------------------------------------+
+    |               | :wiki:`Kolmogorov equation <Master_equation>`    | :wiki:`Schrödinger equation <Schr%C3%B6dinger_equation>`    |
+    |dynamics       |  :math:`\frac{d}{dt}\mathbf{p}(t)=R\mathbf{p}(t)`|      :math:`i\frac{d}{dt}\mathbf{c}(t)=H \mathbf{c}(t)`     |
+    +---------------+--------------------------------------------------+-------------------------------------------------------------+
+    |solution       |:math:`\mathbf p(t) = e^{Rt}\mathbf p(0)`         |:math:`\mathbf c(t)=e^{-iHt}\mathbf c(0)`                    |
+    +---------------+--------------------------------------------------+-------------------------------------------------------------+
 
 
+In general, both :math:`R` and :math:`H` can be time-dependent and both
+solutions can be very complicated.
 
-In general, both :math:`R` and :math:`H` can be time-dependent and the solution can be very complicated.
 
-
-Superposition principle and quantum measurement
------------------------------------------------
+superposition principle and quantum measurement
+===============================================
 
 :wiki:`superposition principle`
 
@@ -187,22 +240,10 @@ Superposition principle and quantum measurement
 Schrodinger's cat
 
 
-entanglement
-============
-
-
-
 
 There is essentially only one type of measurement in quantum mechanics: the so-called :wiki:`von Neumann measurement <>`,
 which is the equivalent of drawing one sample from a probability distribution.
 
 .. math:: \left<\psi\right| A \left|\psi\right>
-
-quantum no-clone theorem
-========================
-
-It is impossible to copy an unknown quantum state.
-
-:wiki:`no-clone theorem<No-cloning_theorem>`
 
 

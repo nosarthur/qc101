@@ -11,7 +11,9 @@ Specifically, I hope to get the readers familiar with the jargons in this field.
 
 Fortunately, as long as we do not worry about hardware implementations
 (superconducting circuits, quantum optics, nuclear magnetic resonance, etc),
-not much physics background is needed.
+not much physics background is needed to get some sense of quantum computing.
+The same thing is true for classical computing.
+In fact, most computer scientists and programmers are not familiar with transistors, the basic building block of classical bit.
 
 However, the reader is assumed to be familiar with
 
@@ -65,4 +67,4 @@ or simply create a pull request on GitHub with your revision.
    state-prep
    readout
    algo
-   decoherence
+   next

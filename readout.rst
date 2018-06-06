@@ -2,20 +2,41 @@
 State readout
 *************
 
-* von-Neumann measurement
+
+* many copies of the same quantum state
+* prior information on what the quantum state could be
 
 Suppose we do not have any prior information about a quantum state,
 it is impossible to know what it is. Take 1-qubit for example, an arbitrary state takes the form
 
+.. math:: \left|\psi\right> = \alpha\left|0\right> + \beta\left|1\right>
+
+A von-Neumann measurement collapses the state to either of the two basis state probabilistically.
+Thus with a single copy of :math:`\left|\psi\right>`, no information on :math:`\alpha`
+or :math:`\beta` can be retrieved.
+
+quantum no-cloning theorem
+==========================
+
+It is impossible to copy an unknown quantum state.
+
+:wiki:`no-cloning theorem`
+
+
 state tomography
 ================
 
+The situation is different when we have multiple copies of the same quantum states.
+Due to the :ref:`quantum no-cloning theorem`,
+one needs to repeat the state preparation to create the copies.
+
+:math:`\left|\psi\right>`
 
 phase kickback
 ==============
 
 Its main idea can be demonstrated with two qubits.
-Suppose we are given a one-qubit unitary gate :math:`U` (the term 'gate' is interchangable with 'time evolution' or 'operator') and one of its eigenstates :math:`\left|\psi\right>`, i.e.,
+Suppose we are given a one-qubit unitary gate :math:`U` (the term 'gate' is interchangeable with 'time evolution' or 'operator') and one of its eigenstates :math:`\left|\psi\right>`, i.e.,
 
 .. math:: U\left|\psi\right> = e^{i\phi}\left|\psi\right>
 
