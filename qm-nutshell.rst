@@ -309,6 +309,7 @@ Note that I didn't explain why the quantum ensemble takes the form of Eq. :eq:`a
 In fact, I don't know any high-level plausible ideas why it should be,
 except that the formalism works.
 
+The value of the off-diagonal terms is not completely arbitrary.
 There is controversy of whether complex numbers are physical
 (i.e., whether they can be measured from an experiment) or they are only
 mental constructions to simplify notations (I tend to take the latter view).

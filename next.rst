@@ -1,6 +1,6 @@
-*********
-Next step
-*********
+***********
+What's next
+***********
 
 In this book we only have a superficial acquitance of limited topics.
 Apart from hiding all hardware implementations,
@@ -26,7 +26,8 @@ resources
   Below is a list of papers that are particularly pedagogical:
 
   * `Quantum algorithms revisited by Richard Cleve, Artur Ekert, Chiara Macchiavello, Michele Mosca (1998) <https://arxiv.org/abs/quant-ph/9708016>`_
-  *
+  * `Quantum Algorithm Implementations for Beginners (2018) <https://arxiv.org/abs/1804.03719>`_
+  * `Building logical qubits in a superconducting quantum computing system by Jay M. Gambetta, Jerry M. Chow, Matthias Steffen <https://arxiv.org/abs/1510.04375>`_  ???
 
 * news feed
 
