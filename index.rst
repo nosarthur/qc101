@@ -39,7 +39,7 @@ While preparing the materials, I follow the following principles to keep my sani
 
 * Concise is better than verbose.
 * Concrete is better than abstract.
-* Task-oriented is better than rambling.
+* Goal-oriented is better than rambling.
 * Comprehensive is better than referencing.
 
 In my experience, making analogy is very helpful in learning new things.
@@ -67,4 +67,5 @@ or simply create a pull request on GitHub with your revision.
    state-prep
    readout
    algo
+   obstacles
    next
