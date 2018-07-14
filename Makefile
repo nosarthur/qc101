@@ -13,16 +13,16 @@ BUILDDIR      = _build
 # Put it first so that "make" without argument is like "make html".
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	cp -fr  _build/html ~/storage/downloads/
+	cp -fr  _build/html ~/Downloads/
 
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 cp:
-	cp -fr  _build/html ~/storage/downloads/
+	cp -fr  _build/html ~/Downloads/
 
 clean:
-	rm -fr ~/storage/downloads/html
+	rm -fr ~/Downloads/html
 	rm -fr _build/
 
 # Catch-all target: route all unknown targets to Sphinx using the new

@@ -2,6 +2,14 @@
 Quantum mechanics in a Nutshell
 *******************************
 
+.. note::
+   The goal of this chapter is to introduce quantum mechanics.
+   There are two aspects to it: the experiment and the theory.
+   Specifically, I will
+   
+   * describe the phenomenon of atoms/molecules absorb light.
+   * compare the math of quantum mechanics to the math of stochastic processes.
+
 The precursor of quantum mechanics, known as classical mechanics,
 is a deterministic theory. Time evolution is described by differential
 equations such as Newton's second law
@@ -28,11 +36,6 @@ Overall, its difference from classical mechanics can be summarized as follows
 #. Dynamics (i.e., transitions between possible states) is probabilistic.
 
 To be concrete, I will use atom as the prototypical quantum object.
-
-.. note::
-    The scope of the chapter includes what quantum mechanics is like and how it
-    differs from classical probability theory and stochastic process. I won't explain
-    why it works (does such explanation exists?) or how it was discovered historically.
 
 absorption spectrum
 ===================
@@ -91,11 +94,47 @@ Thus by looking at these lines, we can deduce the composition of the Sun and eve
 But what does it mean that iron (or any other atoms or molecules) has multiple absorption lines?
 One hypothesis could be that iron atom has multiple states and each state corresponds to one particular line.
 This is actually not too far from the full story.
-It was puzzling to the 19'th century classical physicists how an atom could only be in a finite number of states.
+The more complete explanation is as follows
+
+#. Each dark line means the absence of light with specific wavelength (or frequency);
+#. That specific light carries a specific amount of energy;
+#. The iron atom has two states whose energy difference equals to that specific light's energy,
+   and it is able to absorb the light and jump from the low energy state to the high energy state.
+
+The first point merely states experimental observation.
+The latter two points are both alien to the 19'th century physicists.
+Nowadays they are known to the general public.
+For example, :wiki:`sunscreen`\ s contain special molecules that absorb :wiki:`ultraviolet` (UV)
+(high frequency/short wavelength) light.
+If the UV light is not blocked by sunscreen, molecules in our skin may absorb them and become something else.
+
+One confusing subtlety of light can be summarized in this question:
+does a dim UV light carry more energy or less energy than a bright red (red is long wavelength/low frequency) light?
+One way to think about this is to imagine light as a flux of flying balls
+(the balls are known as :wiki:`photon`\ s).
+Two factors contributes to the light source's intensity, or brightness, or
+:wiki:`illuminance` or :wiki:`radiance` as coined by the pros:
+
+* the number of balls hit a unit area in a unit time, i.e., the flux
+* the energy carried by each ball: a purple ball has more energy than a red ball
+
+Thus it is possible that a dim UV light (small flux) bombast one's skin
+(of a fixed area and in a fixed time span) with less energy than a bright red light.
+However, red light is much less likely to be absorbed by the skin thus it doesn't
+cause as much harm as a dimmer UV light even though it carries more energy.
+
+Now let me illustrate why it's weird for an atom (or molecule) to be in a finite number of states.
 By that time, physicists already knew that atoms are made of nucleus with positive charge and electrons with negative charge.
 If one makes the analogy that nucleus is the Sun, an electron is a planet,
 and the attractive force between positive and negative charges plays the role of
 gravitational attraction, it is unclear why only a finite number of stable orbits exist.
+Note that in the Sun-and-planet case, there are infinite stable orbits,
+although only a few of them are occupied.
+If we launch a new satellite, we pre-calculate the stable orbit so that it doesn't hit
+into other things.
+And if the satellite's speed increase a little bit, it will be in a slightly
+different orbit.
+
 Again the full explanation require quantum mechanics.
 
 .. seealso::
@@ -108,13 +147,6 @@ However, the evidence of them are quite strong, thus a successful theory has to 
 As a result, quantum theory is bizarre.
 
    All models are wrong; some are useful. --- :wiki:`George E. P. Box`
-
-.. seealso::
-
-   The discovery of quantum mechanics is quite interesting.
-   At the end of 19'th century, only a handful experiments cannot be explained by
-   classical physics.
-
 
 analogy of coin tossing
 =======================

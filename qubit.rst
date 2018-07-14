@@ -2,13 +2,25 @@
 Quantum bit (qubit)
 *******************
 
+.. note:: 
+    The goal of this chapter includes
+
+    * introducing 3 different ways to represent a qubit state
+        * wave function :math:`\left|\psi\right>` as a 2D complex vector
+        * Bloch vector :math:`[x, y, z]^T` as a 3D real vector
+        * density matrix :math:`\rho` as a :math:`2\times2` matrix with complex entries
+    * calculting time evolution (i.e., quantum gate) using time-independent Hamiltonian
+
+    The time evolution calculation may be the most mathematical section of the
+    whole book. Feel free to skip it if needed.
+
 A qubit is a quantum object with two states.
 It is an abstraction with all hardware implementation details hidden,
 just like its classical counterpart of :wiki:`bit <Bit>`.
 To be concrete, one can think of the two qubit states to be two states of an atom,
 or two sides of a coin.
 
-In this book, I will only deal with pure state.
+In this book, we will almost only deal with pure state.
 For qubit, it has the parametrization
 
 .. math:: \left|\psi\right> = \alpha\left|0\right> + \beta\left|1\right>
@@ -32,8 +44,8 @@ and parametrize with only two real values
 It may look strange to use :math:`\theta/2` instead of :math:`\theta`.
 This choice will become clear in the next section.
 
-a geometric picture
--------------------
+a geometric picture and the density matrix
+------------------------------------------
 
 There is a geometric picture called :wiki:`Bloch sphere representation <Bloch_sphere>` 
 for quantum two-state systems, which may be first formulated in studies of :wiki:`nuclear magnetic resonance`.
@@ -48,6 +60,7 @@ qubit state :math:`\left|\psi\right>` to three ensemble averages
           y &= \left<\psi|Y|\psi\right> \\
           z &= \left<\psi|Z|\psi\right>
           \end{align}
+    :label: xyz
 
 where :math:`X, Y, Z` are :wiki:`Pauli matrices`:
 
@@ -55,6 +68,9 @@ where :math:`X, Y, Z` are :wiki:`Pauli matrices`:
           Y &= \begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix} \\
           Z &= \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
           \end{align}
+
+This three dimensional real vector is called Block vector.
+Note also that the Pauli matrices are :wiki:`Hermitian <Hermitian_matrix>` and :wiki:`traceless <Trace_(linear_algebra)>`.
 
 Plugging the state Eq. :eq:`bloch-vector`, we have
 
@@ -78,6 +94,56 @@ as in :numref:`bloch-sphere`.
 
    Bloch sphere
 
+There is another way to introduce the Bloch vector, which is tied to a different
+way to represent the quantum state, the so-called density matrix.
+Instead of writing the quantum state as a complex vector :math:`\left|\psi\right>`,
+we could alternatively write it out as a matrix
+
+.. math:: \rho = \left|\psi\right>\left<\psi\right|
+
+If we know :math:`\left|\psi\right>`, it's trivial to get :math:`\rho`.
+However, if know :math:`\rho`, we cannot decompose it into a unique :math:`\left|\psi\right>`
+because :math:`e^{i\gamma}\left|\psi\right>` with any real-valued :math:`\gamma`
+is also valid. This is not a problem since the overall phase factor does not
+affect any measurement result.
+
+The diagonal entries of :math:`\rho` denote the probability of the states.
+And the off-diagonal entries denote the quantum interference that has no classical counterpart.
+We can easily see that the following identity holds
+
+.. math: tr(\rho)\equiv \sum_i \rho_i = 1
+
+where :math:`tr` is the so-called trace operation, which sums the diagonal entries.
+
+For a single qubit, the density matrix can be decomposed as
+
+.. math: \rho = I + x X + y Y + z Z
+
+and the Bloch vector components in Eq. :eq:`xyz` can be expressed as
+
+.. math: \begin{align}
+        x &= tr(\rho X) \\
+        y &= tr(\rho Y) \\
+        z &= tr(\rho Z)
+        \end{align}
+
+This can be understand in terms of a linear space of matrices.
+The density matrix :math:`\rho` is a Hermitian matrix,
+i.e. :math:`\rho^\dagger=\rho`.
+All :math:`2\times2` Hermitian matrix can be expanded with the basis set :math:`\{I, X, Y, Z\}`.
+
+The inner product for this linear space is the trace operation :math:`tr`.
+Thus two matrices :math:`A, B` are orthogonal if
+
+.. math: tr(AB) = 0
+
+Overall, the density matrix is
+
+* a more succinct representation of the quantum state
+    * it automatically gets rid of the global phase factor;
+    * it connects to physical observables directly;
+* a more general representation that can model the so-called mixed states,
+  which will be covered in the obstacle chapter.
 
 time evolution
 --------------

@@ -2,6 +2,10 @@
 Overview
 ********
 
+.. note::
+   The goal of this chapter is to introduce the idea of quantum computing and
+   quantum computer without mathematical formulas. 
+
 .. _Richard Feynman: https://en.wikipedia.org/wiki/Richard_Feynman
 .. _universal quantum computer: https://en.wikipedia.org/wiki/Quantum_Turing_machine
 
@@ -48,7 +52,6 @@ All we need to do is to set up the [Hamiltonian](https://en.wikipedia.org/wiki/H
 and then wait for the desired end time of the simulation.
 For example, if we use the quantum system of interest to 'simulate' itself and we are interested in the result at 1 second, then we just wait for 1 second and look at the system.
 
-
 Nowadays there is a vague notion of :wiki:`quantum supremacy`
 at 50 qubits.
 It basically says that a quantum computer with 50 qubits has more computational power than any classical computer.
@@ -56,6 +59,9 @@ If we just count the size of the state space, 50 qubit amounts to a state vector
 Matrix multiplications on such vectors is indeed daunting.
 There are still controversies on whether this supremacy happens at 50 qubits.
 But it definitely gives strong incentives for the tech companies to make 50-qubit devices.
+
+general-purpose quantum computer
+================================
 
 It doesn't take long for the idea of `universal quantum computer`_ to appear, for example
 
@@ -77,7 +83,7 @@ This line of thought is a direct analogy of the classical :wiki:`Church-Turing t
     |    | - computation unit                | - computation unit           |
     |    | - storage unit                    | - storage unit ??            |
     +----+-----------------------------------+------------------------------+
-    |gate| - 1-bit: NOT                      | - 1-qubit:                   |
+    |gate| - 1-bit: NOT                      | - 1-qubit: X, Y, Z, etc      |
     |    | - 2-bit: AND, OR, XOR, NAND, etc  | - 2-qubit: CNOT, CPHASE, etc |
     |    | - 3-bit: Toffoli                  | - 3-qubit: Toffoli           |
     +----+-----------------------------------+------------------------------+
