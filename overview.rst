@@ -4,7 +4,7 @@ Overview
 
 .. note::
    The goal of this chapter is to introduce the idea of quantum computing and
-   quantum computer without mathematical formulas. 
+   quantum computer without equations. 
 
 .. _Richard Feynman: https://en.wikipedia.org/wiki/Richard_Feynman
 .. _universal quantum computer: https://en.wikipedia.org/wiki/Quantum_Turing_machine
@@ -31,9 +31,9 @@ There are two aspects to this expense:
 
 In the most straightforward implementation, the number of bits needed to describe a quantum system on a classical computer grows exponentially with the number of atoms.
 For example, if 10 states are needed to describe an atom, then a 100-atom system would require a vector of size :math:`10^{100}` components.
-Note that the :wiki:`number of atoms in the whole universe<Observable_universe#Matter_content>` is estimated to be :math:`\sim 10^{80}`.
+Note that the :wiki:`number of atoms in the whole universe<Observable_universe#Matter_content>` is estimated to be about :math:`10^{80}`.
 
-In order to calculate the time evolution of quantum systems, :wiki:`matrix manipulations<Matrix_(mathematics)>` are needed.
+Time evolution of quantum systems is computed using :wiki:`matrix manipulations<Matrix_(mathematics)>`.
 On classical computers, straightforward implementation of :wiki:`matrix multiplication` has computational complexity :math:`O(n^3)`,
 where :math:`n` is the matrix size.
 It is possible to make it slightly more efficient but not much: definitely not :math:`O(n^2)`.
@@ -43,12 +43,13 @@ calculating its dynamics would then have time complexity :math:`O(10^{300})` in 
 Thus in practice, such straightforward implementation on classical computers,
 the so-called :wiki:`full configuration interaction` approach, can only be used to study very small molecules.
 Many approximated methods have been developed to deal with medium sized molecules with less computational burden.
-For large molecules such as proteins which can easily have more than 100,000 atoms, it is still extremely challenging if not impossible to simulate them quantum mechanically.
+For large molecules such as proteins which can easily have more than 100,000 atoms, it is still extremely challenging if not impossible to simulate them.
 
 On the other hand, if we have a simulator which is itself quantum mechanical,
 Nature will take care of the time evolution calculation:
 no more matrix multiplications.
-All we need to do is to set up the [Hamiltonian](https://en.wikipedia.org/wiki/Hamiltonian_(quantum_mechanics)) of the system (i.e., describe how atoms interact),
+All we need to do is to set up the `Hamiltonian <https://en.wikipedia.org/wiki/Hamiltonian_(quantum_mechanics)>`_
+of the system (i.e., describe how atoms interact),
 and then wait for the desired end time of the simulation.
 For example, if we use the quantum system of interest to 'simulate' itself and we are interested in the result at 1 second, then we just wait for 1 second and look at the system.
 
@@ -71,24 +72,6 @@ The goal here is to build a universal machine that can do all possible calculati
 In terms of quantum simulators, it means that one would have a device that can simulate all possible quantum systems at least with some approximations.
 This line of thought is a direct analogy of the classical :wiki:`Church-Turing thesis`.
 
-.. _quantum-classical:
-.. table:: Comparison of classical and quantum computer
-
-    +----+-----------------------------------+------------------------------+
-    |    |   classical computer              | quantum computer             |
-    +====+===================================+==============================+
-    |bit | bit                               | qubit                        |
-    |    |                                   |                              |
-    |    | - two voltage states 0 and 1      | - two quantum basis states   |
-    |    | - computation unit                | - computation unit           |
-    |    | - storage unit                    | - storage unit ??            |
-    +----+-----------------------------------+------------------------------+
-    |gate| - 1-bit: NOT                      | - 1-qubit: X, Y, Z, etc      |
-    |    | - 2-bit: AND, OR, XOR, NAND, etc  | - 2-qubit: CNOT, CPHASE, etc |
-    |    | - 3-bit: Toffoli                  | - 3-qubit: Toffoli           |
-    +----+-----------------------------------+------------------------------+
-
-
 comparison to classical computing
 ---------------------------------
 
@@ -99,7 +82,16 @@ A classical computer has the following components:
 * input device: switches, keyboard, mouse, etc
 * output device: light bulbs, speaker, screen, etc
 
+
+
 This layout is known as the :wiki:`Von Neumann architecture`.
+
+Currently, the so-called quantum computers on the market are more of the nature
+of quantum processors, where the computation process is a quantum time evolution
+of the quantum bits.
+As far as I know, 'quantum memory' does not exist. Thus calculations need to be
+read out immediately.
+
 For classical computing, increasing level of abstraction
 
 * underlying physical processes
@@ -108,18 +100,39 @@ For classical computing, increasing level of abstraction
 * :wiki:`assembly language<Assembly_language>`
 * higher-level languages
 
-Currently, the so-called quantum computers on the market are more of the nature
-of quantum processors, where the computation process is a quantum time evolution
-of the quantum bits.
+Fortunately, as long as we do not worry about hardware implementations
+(superconducting circuits, quantum optics, nuclear magnetic resonance, etc),
+not much physics background is needed to get some sense of quantum computing.
+The same thing is true for classical computing.
+In fact, most computer scientists and programmers are not familiar with transistors, the basic building block of classical bit.
+
+
+
+.. _quantum-classical:
+.. table:: Comparison of classical and quantum computer
+
+    +-----------+-----------------------------------+------------------------------+
+    |           |   classical computer              | quantum computer             |
+    +===========+===================================+==============================+
+    |   bit     | bit                               | qubit                        |
+    |           |                                   |                              |
+    |           | - two voltage states 0 and 1      | - two quantum basis states   |
+    |           | - computation unit                | - computation unit           |
+    |           | - storage unit                    | - storage unit ??            |
+    +-----------+-----------------------------------+------------------------------+
+    |   gate    | - 1-bit: NOT                      | - 1-qubit: X, Y, Z, etc      |
+    |           | - 2-bit: AND, OR, XOR, NAND, etc  | - 2-qubit: CNOT, CPHASE, etc |
+    |           | - 3-bit: Toffoli                  | - 3-qubit: Toffoli           |
+    +-----------+-----------------------------------+------------------------------+
+    |math       |:wiki:`Boolean algebra`            | :wiki:`Lie algebra`,         |
+    |foundations|                                   | :wiki:`Lie group`            |
+    +-----------+-----------------------------------+------------------------------+
 
 Nowadays, the quantum computing industry all adopted the :wiki:`cloud based quantum computing`.
 Thus a quantum programmer designs some kind of machine code or assembly-like language, uploads to the cloud.
 Due to the peculiar nature of quantum mechanics, initializing the quantum bits
 and reading out their states are hard.
 And I have dedicated chapters for them later.
-
-As far as I know, 'quantum memory' does not exist. Thus calculations need to be
-read out immediately.
 
 For quantum computing, one still needs to work on lower levels.
 The optimal protocols, or even the best hardware implementations are not settled yet.

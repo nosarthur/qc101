@@ -22,14 +22,27 @@ resources
   * `Quantum Computing since Democritus <https://www.amazon.com/gp/product/0521199565/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0521199565&linkCode=as2&tag=nosarthur2016-20&linkId=4b6c7bf509590403b3ddbdb69ab94a2a>`_ (2013) by :wiki:`Scott Aaronson`:
     This book talks about many interesting topics. You can take a glimpse on `Scott Aaronson's website <https://www.scottaaronson.com/democritus/>`_.
 
+* lecture notes
+
+  * `Professor John Preskill's Physics229 at Caltech <http://www.theory.caltech.edu/people/preskill/ph229/#lecture>`_
+  * `Professor David Mermin's CS483 at Cornell <http://www.lassp.cornell.edu/mermin/qcomp/CS483.html>`_
+
 * papers: most quantum computing papers can be found on `arxiv quant-ph <https://arxiv.org/archive/quant-ph>`_
   Below is a list of papers that are particularly pedagogical:
 
   * `Quantum algorithms revisited by Richard Cleve, Artur Ekert, Chiara Macchiavello, Michele Mosca (1998) <https://arxiv.org/abs/quant-ph/9708016>`_
   * `Quantum Algorithm Implementations for Beginners (2018) <https://arxiv.org/abs/1804.03719>`_
-  * `Building logical qubits in a superconducting quantum computing system by Jay M. Gambetta, Jerry M. Chow, Matthias Steffen <https://arxiv.org/abs/1510.04375>`_  ???
 
 * news feed
 
   * `quantum computing report <https://quantumcomputingreport.com/>`_
 
+* quantum computer and simulator on the cloud
+
+  * `IBM's quantum experience<https://quantumexperience.ng.bluemix.net/qx/experience>`_
+  * `Google's playground<http://www.quantumplayground.net/>`_
+
+
+misc
+
+  * `Building logical qubits in a superconducting quantum computing system by Jay M. Gambetta, Jerry M. Chow, Matthias Steffen <https://arxiv.org/abs/1510.04375>`_  ???

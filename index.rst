@@ -6,54 +6,70 @@
 Quantum computing 101 for non-physicists
 ----------------------------------------
 
-This is a gentle introduction to quantum computing for someone with technical background but not physics background.
-Specifically, I hope to get the readers familiar with the jargons in this field.
+Quantum computing has become a new buzzword nowadays.
+Big tech companies are competing to bring quantum computing services to the market.
+More and more startups are funded to to provide quantum computing solution
+plans and develop devices.
 
-Fortunately, as long as we do not worry about hardware implementations
-(superconducting circuits, quantum optics, nuclear magnetic resonance, etc),
-not much physics background is needed to get some sense of quantum computing.
-The same thing is true for classical computing.
-In fact, most computer scientists and programmers are not familiar with transistors, the basic building block of classical bit.
+* Oct.2017
+    * `Microsoft released a preview of its quantum computing development kit <https://docs.microsoft.com/en-us/quantum/?view=qsharp-preview>`_
+    * `Intel announced 17-qubit processor <https://newsroom.intel.com/news/intel-delivers-17-qubit-superconducting-chip-advanced-packaging-qutech/>`_
+    * `IBM demonstrated simulation of 56 qubits on classical computer with 3TB memory cost <https://www.ibm.com/blogs/research/2017/10/quantum-computing-barrier/>`_
+    * `Google announced an open source chemistry package called OpenFermion <https://research.googleblog.com/2017/10/announcing-openfermion-open-source.html>`_
+* Nov.2017
+    * `IBM announced 20-qubit processor for clients and 50-qubit prototype <https://www-03.ibm.com/press/us/en/pressrelease/53374.wss>`_
+* Jan.2018
+    * `Intel announced 49-qubit processor <https://newsroom.intel.com/news/intel-advances-quantum-neuromorphic-computing-research/>`_
+* Mar.2018
+    * `Google announced the new Bristlecone quantum processor with 72 qubits <https://ai.googleblog.com/2018/03/a-preview-of-bristlecone-googles-new.html>`_
+* Jun.2081
+    * `IBM released ACQUA (Algorithms and Circuits for QUantum Applications) library <https://www.ibm.com/blogs/research/2018/06/domain-experts-qiskit-acqua/>`_
+* Jul.2018
+    * `Google released an open source framework for NISQ algorithms <https://ai.googleblog.com/2018/07/announcing-cirq-open-source-framework.html>`_
 
-However, the reader is assumed to be familiar with
+Despite the breaking news, quantum computing is mysterious because its
+prerequisites, quantum mechanics and computing theory, are only known by the experts.
+And most online learning materials are written for physics majors.
 
-* linear algebra
-* probability theory
+The purpose of this book is to introduce quantum computing to non-physicists.
+If the quantum computing field is a state park, then this book describes one
+trail that shows the rough landscape.
 
-Specifically, the following equations should look familar
+What this book doesn't do:
+
+* It doesn't teach quantum mechanics.
+* It doesn't go into the details of hardwares.
+
+The maths are kept easy and analogies/comparisons are often used.
+The reader is assumed to know linear algebra and probability theory.
+Specifically, the following equations should look familiar
 
 * :math:`\mathbf f = m\mathbf a`
 * :math:`\frac{d}{dt}\mathbf p = R\mathbf p`
-
-It is not essential to remember what each symbol denotes,
-as long as you are not afraid of differential equations.
+* :math:`A \mathbf x = \lambda \mathbf x`
+* :math:`e^{i\theta} = \cos\theta + i\sin\theta`
 
 As for notation, I use upper case letter for matrix,
-bold and lower case letter for vector,
-and lower case letter for scalars.
-For notational simplicity, :wiki:`Planck constant` is ommited in all formulas.
+bold and lower case letter for vector, and lower case letter for scalars.
+For simplicity, :wiki:`Planck constant` is omitted in all formulas.
+
+.. note::
+   I will use these boxes to give heads up.
+
+.. seealso::
+   I will use these boxes to include optional materials.
 
 The book should be read in linear order.
 
-While preparing the materials, I follow the following principles to keep my sanity
+While preparing the materials, I follow several principles to keep my sanity
 
 * Concise is better than verbose.
 * Concrete is better than abstract.
 * Goal-oriented is better than rambling.
 * Comprehensive is better than referencing.
 
-In my experience, making analogy is very helpful in learning new things.
-Thus I will use it whenever possible.
-
-Choices of the materials are biased to my interest.
-Please email me if you find errors in the document: zhou.dong@gmail.com
-or simply create a pull request on GitHub with your revision.
-
-
-.. seealso::
-   I will use these boxes to include information that is not essential to this
-   document, but too interesting to dismiss.
-
+Please email me if you find errors, or have comments and suggestions.
+Feel free to create pull requests on GitHub with revision too.
 
 .. toctree::
    :maxdepth: 2

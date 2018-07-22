@@ -6,7 +6,7 @@ Quantum mechanics in a Nutshell
    The goal of this chapter is to introduce quantum mechanics.
    There are two aspects to it: the experiment and the theory.
    Specifically, I will
-   
+
    * describe the phenomenon of atoms/molecules absorb light.
    * compare the math of quantum mechanics to the math of stochastic processes.
 
@@ -433,7 +433,10 @@ A side-by-side comparison of quantum mechanics and stochastic processes is shown
     |solution       |:math:`\mathbf p(t) = e^{Rt}\mathbf p(0)`         |:math:`\mathbf c(t)=e^{-iHt}\mathbf c(0)`                    |
     +---------------+--------------------------------------------------+-------------------------------------------------------------+
 
+.. seealso::
 
+    Here I only presented the equations and notations used in quantum mechanics,
+    but didn't explain how they come into being. The
 
 
 
