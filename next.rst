@@ -5,14 +5,7 @@ What's next
 In this book we only have a superficial acquitance of limited topics.
 Apart from hiding all hardware implementations,
 we also fully ignored many important topics.
-The most important two topics of practical concern are
 
-* :wiki:`quantum decoherence`: This is about how things could go wrong and it is
-  the reason why we don't have an awesome quantum computer yet.
-* :wiki:`quantum error correction`: This is the counterpart of classical error correction and it is meant to fight decoherence.
-
-resources
-=========
 
 * books
 
@@ -39,8 +32,8 @@ resources
 
 * quantum computer and simulator on the cloud
 
-  * `IBM's quantum experience<https://quantumexperience.ng.bluemix.net/qx/experience>`_
-  * `Google's playground<http://www.quantumplayground.net/>`_
+  * `IBM's quantum experience <https://quantumexperience.ng.bluemix.net/qx/experience>`_
+  * `Google's playground <http://www.quantumplayground.net/>`_
 
 
 misc

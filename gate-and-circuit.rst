@@ -8,7 +8,7 @@ logic gate -> quantum gate
    The purpose of computing is insight, not numbers. --- :wiki:`Richard Hamming <Richard_Hamming>`
 
 
-Quantum gates
+quantum gates
 =============
 
 one-qubit gates
@@ -54,8 +54,14 @@ For classical bits, the input to this CNOT gate can only be one of the four unit
     \end{bmatrix}
 
 
+quantum gate design
+===================
 
-Ancilla qubits and classical logic gates
+depends on the hardware. 
+
+quantum control theory
+
+ancilla qubits and classical logic gates
 ========================================
 
 There is a gap between universal quantum gates which are low-level  and general unitary operations which are high-level.
@@ -158,5 +164,3 @@ Applying this recipe to the AND gate, you will get Toffoli gate.
 
 This trick is often called Controlled-f gate.
 
-emulate logic gates
-===================

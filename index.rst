@@ -6,6 +6,9 @@
 Quantum computing 101 for non-physicists
 ----------------------------------------
 
+.. warning::
+   This is an unfinished draft.
+
 Quantum computing has become a new buzzword nowadays.
 Big tech companies are competing to bring quantum computing services to the market.
 More and more startups are funded to to provide quantum computing solution
@@ -38,7 +41,7 @@ trail that shows the rough landscape.
 What this book doesn't do:
 
 * It doesn't teach quantum mechanics.
-* It doesn't go into the details of hardwares.
+* It doesn't include physical implementations of quantum computation.
 
 The maths are kept easy and analogies/comparisons are often used.
 The reader is assumed to know linear algebra and probability theory.
@@ -54,10 +57,10 @@ bold and lower case letter for vector, and lower case letter for scalars.
 For simplicity, :wiki:`Planck constant` is omitted in all formulas.
 
 .. note::
-   I will use these boxes to give heads up.
+   I use these boxes to give heads up.
 
 .. seealso::
-   I will use these boxes to include optional materials.
+   I use these boxes for optional materials.
 
 The book should be read in linear order.
 

@@ -127,11 +127,11 @@ It turns out that **many quantum algorithms boil down to somehow encode the answ
 with the help of controlled-unitary gates**.
 Thus it is very helpful to think in this phase kickback framework.
 
-Quantum Fourier transform (QFT)
+quantum Fourier transform (QFT)
 ===============================
 
 
-Discrete Fourier transform (DFT)
+discrete Fourier transform (DFT)
 --------------------------------
 
 QFT is closely related to :wiki:`discrete Fourier transform` (DFT),

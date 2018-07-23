@@ -59,7 +59,7 @@ In the quantum computing framework, the equivalent procedure is to first apply [
 Admittedly, Deutch algorithm is quite artificial.
 But it opens up the possibility of exponential speedup on quantum computers.
 
-Phase estimation algorithm (PEA)
+phase estimation algorithm (PEA)
 ================================
 
 In special occasions, the exponential speedup materializes.
@@ -89,9 +89,8 @@ the aforementioned protocol produces the best :math:`N`-bit approximation of :ma
 (in this case one also needs to repeat this protocol several times to be sure).
 
 
-
-Quantum Approximate Optimization Algorithm (QAOA)
+quantum Approximate Optimization Algorithm (QAOA)
 =================================================
 
-Quantum random walk
+quantum random walk
 ===================
