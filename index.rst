@@ -83,7 +83,7 @@ Feel free to create pull requests on GitHub with revision too.
    qubit
    entanglement
    gate-and-circuit
-   state-prep
+   prep
    readout
    algo
    obstacles

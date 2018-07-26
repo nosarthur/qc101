@@ -317,13 +317,6 @@ one-qubit quantum gate
 
 In the chapter, we have seen a few important single-qubit gates.
 
-The Pauli X matrix is actually a gate since it is unitary
-(actually all Pauli matrices are both Hermitian and unitary, thus could be gates)
-
-.. math:: X = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}
-
-It is the equivalent of NOT gate in classical computing.
-
 The Z rotation essentially gives rise to the so-called phase shift gate
 
 .. math:: U_\phi = \begin{bmatrix} 1 & 0 \\
@@ -333,9 +326,20 @@ When we diagonalize the Pauli :math:`X` matrix, the auxiliary :math:`V` matrix
 is a very useful gate called :wiki:`Hadamard gate <Quantum_logic_gate#Hadamard_(H)_gate>`.
 Conventionally it is denoted as
 
-.. math:: H = \frac{1}{\sqrt 2}\begin{bmatrix}1 & 1 \\ 1 & -1 \end{bmatrix} 
+.. math:: H = \frac{1}{\sqrt 2}\begin{bmatrix}1 & 1 \\ 1 & -1 \end{bmatrix}
 
 Its common usage is to turn :math:`\left|0\right>` to
 :math:`\frac{1}{2}\left(\left|0\right> + \left|1\right>\right)`.
+
+The Pauli X matrix is actually a gate since it is unitary
+(actually all Pauli matrices are both Hermitian and unitary, thus could be gates)
+
+.. math:: X = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}
+
+It is the equivalent of NOT gate in classical computing since it swaps
+:math:`\left|0\right>` and :math:`\left|1\right>` states.
+
+Note that NOT gate is the only logic gate for single bit in classical computing.
+Quantum computing contains infinitely more gates because its state space is continuous.
 
 We will see these gates over and over again in later chapters.

@@ -2,10 +2,6 @@
 Overview
 ********
 
-.. note::
-   The goal of this chapter is to introduce the idea of quantum computing and
-   quantum computer without equations. 
-
 .. _Richard Feynman: https://en.wikipedia.org/wiki/Richard_Feynman
 .. _universal quantum computer: https://en.wikipedia.org/wiki/Quantum_Turing_machine
 

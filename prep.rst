@@ -3,8 +3,8 @@ State preparation
 *****************
 
 
-preprare :math:`\left|0\right>` state
--------------------------------------
+preprare the :math:`\left|0\right>` state
+-----------------------------------------
 
 Most quantum algorithms assume the initial state to be :math:`\left|0\right>^{\otimes n}`,
 i.e., all qubits are in the :math:`\left|0\right>` state.

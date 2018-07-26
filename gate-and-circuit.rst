@@ -77,21 +77,9 @@ This poses an question of how to implement classical high-level operations in te
 
 In this section, 
 
-NOT gate
---------
-
 .. _reversible computing: https://en.wikipedia.org/wiki/Reversible_computing
 
-The NOT gate is the only non-trivial 1-bit logic gate.
-You can easily check that :wiki:`Pauli matrix <Pauli_matrices>` :math:`\sigma_x` does the trick.
-It takes the explicit matrix form as follows and its rows are natural basis.
 
-.. math::
-
-    \sigma_x = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
-
-XOR gate
---------
 
 When it comes to two-bit logic gates, the situation is a little different: there are two input bits and only one output bit.
 Thus we can take two approaches
