@@ -44,15 +44,6 @@ In fact, if we keep the control bit as well in the output, we get exactly the sa
 
 For classical bits, the input to this CNOT gate can only be one of the four unit vectors, corresponding to state 00, 01, 10, and 11.
 
-.. math::
-
-    \begin{bmatrix}
-    1& 0 & 0 & 0\\
-    0& 1 & 0 & 0\\
-    0& 0 & 0 & 1\\
-    0& 0 & 1 & 0
-    \end{bmatrix}
-
 
 quantum gate design
 ===================
@@ -90,8 +81,6 @@ Thus we can take two approaches
 For the XOR gate, the first approach is already sufficient to construct a unitary matrix.
 Suppose we order the input and output as 00, 01, 10, 11 (they can be viewed as binary strings for 0, 1, 2, 3), and overwrite the second bit, then we have
 
-
-In fact, it is an important 2-qubit quantum gate called :wiki:`Controlled-NOT or CNOT gate <Controlled_NOT_gate>`.
 
 AND gate
 --------

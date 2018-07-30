@@ -59,3 +59,8 @@ The criteria are
 * :wiki:`quantum error correction`: This is the counterpart of classical error correction and it is meant to fight decoherence.
 
 
+* decoherence
+
+* scalability
+* gate fidelity
+* state prep
