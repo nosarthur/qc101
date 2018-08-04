@@ -27,8 +27,10 @@ two-qubit gates
 
 It's possible to make two-qubit gates out of single-qubit gates. For example,
 
-.. math:: X\otimes X = \begin{bmatrix} 0 & 0 & 0 & 1\\ 0 & 0 & 1 & 0\\
-                0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0\end{bmatrix}
+.. math:: \begin{align}X\otimes X =& \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}\otimes
+                    \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \\
+            =& \begin{bmatrix} 0 & 0 & 0 & 1\\ 0 & 0 & 1 & 0\\
+                0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0\end{bmatrix}\end{align}
 
 where :math:`X` is the Pauli X gate. However, such gates are less interesting
 than the ones that cannot be expressed as tensor products, because they don't
@@ -52,7 +54,7 @@ The truth table of XOR gate is
 In classical computing, three bits are involved in XOR gate: two input bits and
 one output bit. In quantum computing, all (single-qubit and multiple-qubit)
 gates are unitary matrices that map the input states to the output states.
-In other words, the input and output qubits are not different qubits.
+In other words, the input and output qubits are the same qubits.
 
 Thus to extend XOR gate to the quantum case, we need to expand the output a
 two-bit string. The easiest way is to overwrite the output to qubit B and let
@@ -73,23 +75,23 @@ If we choose the representation
 
 then the quantum equivalent of the classical XOR gate takes the form
 
-.. math:: CNOT = \begin{bmatrix}
+.. math:: \begin{align} CNOT =& \begin{bmatrix}
     1& 0 & 0 & 0\\
     0& 1 & 0 & 0\\
     0& 0 & 0 & 1\\
     0& 0 & 1 & 0
-    \end{bmatrix} = \left|0\right>\left<0\right|\otimes I
-                    + \left|1\right>\left<1\right|\otimes X
+    \end{bmatrix}\\ =& \left|0\right>\left<0\right|\otimes I
+                    + \left|1\right>\left<1\right|\otimes X \end{align}
     :label: cnot
 
 In fact, it is an important 2-qubit quantum gate called
-:wiki:`Controlled-NOT or CNOT gate <Controlled_NOT_gate>`, and we will see
-its usage many times later in this book.
+:wiki:`Controlled-NOT or CNOT gate <Controlled_NOT_gate>`, and it will be used
+many times later in this book.
 Its name comes from the following interpretation: if the first qubit is in
-state :math:`\left|0\right>`, don't do anything on the second qubit; if the
+state :math:`\left|0\right>`, don't do anything to the second qubit; if the
 first qubit is in state :math:`\left|1\right>`, flip the second qubit state.
 
-We pick XOR gate as an example because it is a reversible gate.
+Here we pick XOR gate as an example because it is a reversible gate.
 Other classical two-bit gates such as AND gate and OR gate are irreversible,
 and their extension to the quantum region will involve three qubits.
 We will see that in the next chapter.
@@ -106,9 +108,20 @@ These states are called separable states.
 The states that cannot be decomposed to tensor product of single-qubit states
 are called :wiki:`entangled states <Quantum_entanglement>`.
 Recall from the previous chapter that each single-qubit pure state has only two
-real parameters. Thus separable states live in a four dimensional subspace of
-the six dimensional two-qubit state space.
+real parameters. Thus two-qubit separable states live in a four dimensional
+subspace of the six dimensional two-qubit state space.
 In other words, there are a lot more entangled states than separable states.
+
+.. seealso::
+   Here I only talk about pure state. The identification and quantification of
+   entanglement in mixed states is more complicated. In short, a separable
+   two-qubit state can be put in the form of
+
+   .. math:: \rho = \sum_{i=1}^K p_i \rho_A \otimes \rho_B
+
+   for some :math:`K` and :math:`\{p_i\}`. You can see that it's a much harder
+   problem than the pure state separability, because of the extra parameters
+   :math:`\{p_i\}`.
 
 Bell states
 -----------
@@ -124,18 +137,11 @@ The nominal examples of two-qubit entangled states are the so-called :wiki:`Bell
 
 Here I omit the normalization factor :math:`1/\sqrt{2}` to save typing.
 Note that the four Bell states are orthogonal to each other thus form a basis
-set other than the computational basis set :math:`\left|00\right>`,
-:math:`\left|01\right>`, :math:`\left|10\right>`, :math:`\left|11\right>`.
-We will see later that it is a very useful basis set to use.
+set. We will see later that it is a very useful basis set to use.
 
-Two sets of basis sets are connected by the two important gates
-
-.. math:: CNOT \cdot H\otimes I \left|00\right> = \left|\Phi^+\right> \\
-        CNOT \cdot H\otimes I \left|01\right> = \left|\Psi^+\right> \\
-        CNOT \cdot H\otimes I \left|10\right> = \left|\Phi^-\right> \\
-        CNOT \cdot H\otimes I \left|11\right> = \left|\Psi^-\right>
-
-and equivalently,
+Bell states can be transformed to the computational basis states :math:`\left|00\right>`,
+:math:`\left|01\right>`, :math:`\left|10\right>`, :math:`\left|11\right>`
+by two gate operations
 
 .. math:: \left|00\right> =H\otimes I \cdot CNOT \left|\Phi^+\right> \\
           \left|01\right> =H\otimes I \cdot CNOT  \left|\Psi^+\right> \\
@@ -143,25 +149,87 @@ and equivalently,
           \left|11\right> =H\otimes I \cdot CNOT  \left|\Psi^-\right>
           :label: Bell-states-conversion
 
+and equivalently,
+
+.. math:: CNOT \cdot H\otimes I \left|00\right> = \left|\Phi^+\right> \\
+        CNOT \cdot H\otimes I \left|01\right> = \left|\Psi^+\right> \\
+        CNOT \cdot H\otimes I \left|10\right> = \left|\Phi^-\right> \\
+        CNOT \cdot H\otimes I \left|11\right> = \left|\Psi^-\right>
+
 The significance of the computational bases is that they represent states on
 hardware and in reality one can only measure these states.
-Thus if we know some computation results in one of the four Bell states, we need
-to apply CNOT and Hadamart gate to convert the result to computational basis
-states first, and then make the measurement.
+Thus if we know some computation results are in one of the four Bell states,
+we can apply CNOT and Hadamart gate to convert the results to computational
+basis states first, and then make the measurement.
 
 Separable state is the quantum analogy of statistical independent random
 variables.
-Entangled states have the peculiar feature that 
+Entangled states have the peculiar feature that the total system is less
+complex than the subsystems.
+To fully understand this statement, one needs to know the concept of
+:wiki:`entropy <Entropy_(information_theory)>` in classical information theory.
+For simplicity, I will use :math:`\left|\Phi^+\right>` as example.
+
+If we measure :math:`\left|\Phi^+\right>` in the two-qubit computational bases,
+the measurement outcome follows :wiki:`Bernoulli distribution` with :math:`p=0.5`,
+just like tossing a fair coin.
 
 .. seealso::
-   Here I only talk about pure state. The identification and quantification of
-   entanglement in mixed states is more complicated. In short, a separable
-   two-qubit state can be put in the form of
+  Here is a short introduction to entropy. **The essense of entropy is state
+  counting. The more states the bigger the entropy.** And entropy quantifies
+  the amount of information, or uncertainty, or possibilities. Suppose the
+  system could be in :math:`N` states with equal probability, then its entropy is
 
-   .. math:: \rho = \sum_i p_i \rho_A \otimes \rho_B
+  .. math:: S = \log N.
 
-   You can see that it's a much harder problem than the pure state separability,
-   since there is no prior knowlege on :math:`\{p_i\}`.
+  Here the logrithm function is a historical convention, any monotonic function
+  could be used. Its base is also arbitrary as long as used consistently. In
+  classical information theory, :math:`N=2` is of special importance because
+  that is the number of states for a :wiki:`bit`. In that case, base 2 is used
+  and we have :math:`S=\log_2 2= 1`, i.e., one bit of information. This is also
+  the entropy of a fair coin.
+
+  What if the coin is not fair? Here we cannot count the states directly since
+  they are not of equal probability. Instead, we can count something else that
+
+  * both characterizes the coin bias and
+  * is made of individual events of equal probabilities.
+
+  This quantity is the number of configurations with certain heads given a fixed
+  number of coin tosses. For example, suppose we make four tosses and focus on
+  configurations with two heads. There are six such configurations: HHTT, HTHT,
+  HTTH, THHT, THTH, TTHH. Here HTHT means the first and third tosses end up with
+  heads. Note that these configurations are of the same probability, no matter
+  what the coin bias is.
+
+  There are still the questions of how many tosses to do and how many heads to
+  focus on. Obviously any finite number of tosses doesn't make sense. And the
+  :wiki:`law of large numbers` automatically fixes the head counts for us, i.e.,
+  with :math:`M` tosses, the number of heads is
+
+  .. math:: M_H = Mp_H
+
+  in the limit of large :math:`M`, and :math:`p_H` is the head probability.
+  This is where the coin bias enters the picture.
+
+  This idea can be expressed as
+
+  .. math::
+     S = \lim_{M\rightarrow \infty} \frac{\log_2 C(M, M_H)}{M}
+
+  where :math:`C(n, k)` is the :wiki:`n-choose-k function <Binomial_coefficient>`,
+  and the denominator is there to prevent the numerator to blow up.
+
+  Using :wiki:`Stirling's approximation`,
+
+  .. math:: \log M! = M\log M  -M + O(\log M)
+
+  we get the :wiki:`binary entropy function`
+
+  .. math:: S = -p_H\log p_H - p_T\log p_T
+
+  It is consistent with the fair coin case. Also the fair coin case has the
+  largest entrpoy, which is :math:`1`.
 
 It turns out that entanglement is a useful resource for quantum communication.
 I will give two examples here - quantum superdense coding and quantum teleportation.
@@ -169,15 +237,18 @@ Usually people think entanglement is also important to get speedup in quantum
 algorithms than their classical counterparts. But this topic is a bit controversial.
 It turns out that entanglement is not the only non-classical correlation
 possessed by qubits (see :wiki:`quantum discord` for example), and there are
-quantum algorithms for (artificial) computational tasks that provide
-exponential speedup over best-known classical algorithm
-and do not contain entanglement.
+quantum algorithms providing exponential speedup over best-known classical
+algorithms and the computation processes do not contain entanglement.
 
 quantum superdense coding
 -------------------------
 
-The purpose of quantum superdense coding is to send one qubit which carries
+The purpose of quantum :wiki:`superdense coding` is to send one qubit which carries
 four messages, i.e., two bits of classical information.
+This work is published in
+
+* C. H. Bennett and Stephen J. Wiesner, Phys. Rev. Lett. 69, 2881 (1992)
+
 
 It may appear that one qubit could encode infinite messages since its state space
 is continuous (recall the qubit state is a 2D complex vector in terms of wave
@@ -185,18 +256,38 @@ function, or a 3D real vector on unit sphere in terms of Bloch vector).
 However, encoding messages in non-orthogonal quantum states messes up the
 decoding, due to the wave function collapse of measurement.
 
-For example, if we encode four messages in
+For example, suppose we encode four messages in
 
 .. math:: \begin{align}\left|0\right> =& \begin{bmatrix}1 \\ 0 \end{bmatrix} \\
         \left|1\right> =& \begin{bmatrix}0 \\ 1 \end{bmatrix} \\
         \left|+\right> =& \left|0\right> + \left|1\right> \\
         \left|-\right> =& \left|0\right> - \left|1\right> \end{align}
 
-Eq. :eq:`Bell-states-conversion` 
+and we receive an encoded qubit from someone. No matter how we measure it, we
+won't be sure about which state it is in.
+In fact, there is a so-called :wiki:`Holevo's bound <Holevo%27s_theorem>` which
+says one qubit can at most carry the information of one classical bit.
 
-This work is published in
+The trick of quantum superdense coding is to first share a Bell state before
+transmitting the message-carrying qubit. For example,
+share :math:`\left|\Psi^-\right>` between Alice and Bob.
 
-* C. H. Bennett and Stephen J. Wiesner, Phys. Rev. Lett. 69, 2881 (1992)
+The encoding can be done by applying one of the four gates :math:`\{I, X, Y, Z\}`
+on Alice's qubit,
+
+.. math:: \begin{align} I \left|\Psi^-\right> =& \left|\Psi^-\right> \\
+             X \left|\Psi^-\right> =& \left|\Phi^-\right> \\
+             Y \left|\Psi^-\right> =& i\left|\Phi^+\right> \\
+             Z \left|\Psi^-\right> =& \left|\Psi^+\right> \\
+             \end{align}
+
+Then Alice can send her qubit to Bob, and Bob can decode the message by
+converting the Bell state to computational basis state as in
+Eq. :eq:`Bell-states-conversion` and making a measurement.
+
+Note that quantum superdense coding does not break Holevo's bound because two
+qubits are sent. It's just that one qubit can be sent at an earlier time and it
+alone does not carry information.
 
 quantum teleportation
 ---------------------
