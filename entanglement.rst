@@ -96,6 +96,19 @@ Other classical two-bit gates such as AND gate and OR gate are irreversible,
 and their extension to the quantum region will involve three qubits.
 We will see that in the next chapter.
 
+CNOT gate belongs to an important class of quantum gates: the controlled-unitary gates.
+In the two-qubit case, controlled-unitary gates have an explicit matrix form
+
+.. math::
+    C(U) = \begin{bmatrix}
+    1& 0 & 0 & 0\\
+    0& 1 & 0 & 0\\
+    0& 0 & u_{00} & u_{01}\\
+    0& 0 & u_{10} & u_{11}
+    \end{bmatrix}
+
+where :math:`u_{ij}` are the matrix components of the single-qubit unitary gate.
+
 separable states and entangled states
 =====================================
 
@@ -122,6 +135,8 @@ In other words, there are a lot more entangled states than separable states.
    for some :math:`K` and :math:`\{p_i\}`. You can see that it's a much harder
    problem than the pure state separability, because of the extra parameters
    :math:`\{p_i\}`.
+
+   * Schmacher 
 
 Bell states
 -----------
@@ -292,15 +307,54 @@ alone does not carry information.
 quantum teleportation
 ---------------------
 
-The purpose of quantum teleportation is to instantaneously destroy a quantum
-state on Alice's side and create it on Bob's side without sending any qubits
-between Alice and Bob.
-It is a primitive version of the device in the movie :wiki:`The Fly <The_Fly_(1986_film)>`.
+The purpose of :wiki:`quantum teleportation` is to instantaneously destroy a
+quantum state on Alice's side and create it on Bob's side without sending any
+qubits between Alice and Bob.
+This work is published in
+
+* C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, W. K. Wootters
+  Teleporting an Unknown Quantum State via Dual Classical and
+  Einstein-Podolsky-Rosen Channels, Phys. Rev. Lett. 70, 1895 (1993).
+
+Again, the prerequisite is to have Alice and Bob share an entangled state, say
+:math:`\left|\Phi+\right>`. The initial state can be written as
+
+.. math:: \left|\xi\right>_A\otimes\left(\left|0\right>_A\left|0\right>_B
+            + \left|1\right>_A\left|1\right>_B \right) =
+            (a\left|0\right> + b\left|1\right>)_A \otimes
+        \left(\left|0\right>_A\left|0\right>_B
+            + \left|1\right>_A\left|1\right>_B \right)
+
+where the subscripts denote the qubits ownership.
+
+Expressing Alice's two qubits in Bell state basis, we get
+
+.. math:: \begin{align}&\left|\Psi^+\right>_A \otimes (a\left|0\right> + b \left|1\right>)_B\\
+        +& \left|\Psi^-\right>_A \otimes (a\left|0\right> - b \left|1\right>)_B \\
+        +& \left|\Phi^+\right>_A \otimes (b\left|0\right> + a \left|1\right>)_B\\
+        + &\left|\Phi^-\right>_A \otimes (-b\left|0\right> + a \left|1\right>)_B\end{align}
+
+Thus by measuring her qubits in the Bell state basis, Alice can project Bob's
+qubit into one of the four states. So if Alice further informs Bob about her
+measurement result, say from classical communication such as phone call, Bob
+can recover the original state :math:`\left|\xi\right>_A`.
+For example, if Alice's measurement result is :math:`\left|\Psi-\right>`, then
+Bob can apply :math:`Z` gate on his qubit.
+
+One may wonder why not sending :math:`\left|\xi\right>` directly. One potential
+usage of teleportation is to send half of the Bell state when quantum
+communication cost is low and when the cost is high, one can use cheap classical
+communication to effectively transfer quantum state.
 
 entanglement measure
 ====================
 
-It is simple to verify whether a pure state is separable.
+Since quantum entanglement can be used as communication resource, it is of
+practical interest to quantify entanglement.
+
+For two-qubit pure states, verifying whether a state is separable is simple.
+Given state in Eq. :eq:`two-qubit-state`, we can check the validity of the
+following equalities
 
 .. math:: \left\{\begin{array}{ll}
     \frac{\alpha_0}{\alpha_2} = \frac{\alpha_1}{\alpha_3}\\
@@ -308,14 +362,15 @@ It is simple to verify whether a pure state is separable.
     \end{array}
    \right.
 
-Add more? Peres PPT? geometric? von Neumann entropy?
-
-
-A natural question is ask is: **are some entangled states more entangled than others?**
+A natural question to ask is: **are some entangled states more entangled than others?**
 For example, it seems plausible that the state
 
 .. math:: \left|\psi_\epsilon\right> = \epsilon\left|00\right> + (1-\epsilon)\left|\Psi^- \right>
 
-is less entangled than the Bell state for small :math:`\epsilon`.
+is less entangled than the Bell state and more entangled than :math:`\left|00\right>`.
 
+There are a lot of open questions in entanglement measure.
+And many interesting results exist for small systems: two-qubits (dimension 4),
+qubit-qutrit (dimension 6), three-qubits (dimension 8).
+Since this is an introductory book, maybe I stop here.
 

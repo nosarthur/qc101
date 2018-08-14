@@ -2,19 +2,13 @@
 Quantum gates and quantum circuit
 *********************************
 
-logic gate -> quantum gate
-
-
    The purpose of computing is insight, not numbers. --- :wiki:`Richard Hamming <Richard_Hamming>`
-
 
 quantum gates
 =============
 
-one-qubit gates
----------------
-
-:wiki:`Hadamard gate <Hadamard_transform>`
+So far we have already seen some important one-qubit and two-qubit gates, such
+as :wiki:`Hadamard gate <Hadamard_transform>`
 
 .. math::
 
@@ -23,37 +17,18 @@ one-qubit gates
     1& -1
     \end{bmatrix}.
 
+and :wiki:`CNOT gate <Controlled_NOT_gate>`
 
-two-qubit gates
----------------
-
-In our two-qubit example, the controlled-unitary gate has an explicit matrix form
-
-.. math::
-    C(U) = \begin{bmatrix}
+.. math:: CNOT =\begin{bmatrix}
     1& 0 & 0 & 0\\
     0& 1 & 0 & 0\\
-    0& 0 & u_{00} & u_{01}\\
-    0& 0 & u_{10} & u_{11}
+    0& 0 & 0 & 1\\
+    0& 0 & 1 & 0
     \end{bmatrix}
 
-where :math:`u_{ij}` are the matrix components of the single-qubit unitary gate.
-Note also that the concept of controlled gate is not new.
-For example, the well known `XOR gate`_ in classical logic is a controlled-NOT gate (with only one output bit though, the one being controlled).
-In fact, if we keep the control bit as well in the output, we get exactly the same two-qubit :wiki:`Controlled-NOT or CNOT gate <Controlled_NOT_gate>` with matrix form
-
-For classical bits, the input to this CNOT gate can only be one of the four unit vectors, corresponding to state 00, 01, 10, and 11.
-
-
-quantum gate design
-===================
-
-depends on the hardware. 
-
-quantum control theory
 
 ancilla qubits and classical logic gates
-========================================
+----------------------------------------
 
 There is a gap between universal quantum gates which are low-level  and general unitary operations which are high-level.
 This same conceptual gap exists in classical computing as well.
@@ -140,4 +115,12 @@ Applying this recipe to the AND gate, you will get Toffoli gate.
 
 
 This trick is often called Controlled-f gate.
+
+quantum gate design
+===================
+
+depends on the hardware. 
+
+quantum control theory
+
 
