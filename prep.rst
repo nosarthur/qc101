@@ -35,6 +35,8 @@ The disadvantage of the previous method is that applying quantum gates is costly
 Current quantum processor can only retain its quantumness for a short period of
 time, which translates to a limited number of gates ().
 
-quantum teleportation
----------------------
+Due to the :wiki:`no-cloning theorem`
+It is impossible to copy an unknown quantum state.
 
+
+quantum teleportation can be seen as state preparation.

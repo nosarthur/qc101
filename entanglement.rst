@@ -374,3 +374,5 @@ And many interesting results exist for small systems: two-qubits (dimension 4),
 qubit-qutrit (dimension 6), three-qubits (dimension 8).
 Since this is an introductory book, maybe I stop here.
 
+
+* `Quantum entanglement, Ryszard Horodecki, Pawel Horodecki, Michal Horodecki, Karol Horodecki, Review of Modern Physics, 81, 865-942 (2009) <https://arxiv.org/abs/quant-ph/0702225>`_

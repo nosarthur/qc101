@@ -4,58 +4,82 @@ Quantum gates and quantum circuit
 
    The purpose of computing is insight, not numbers. --- :wiki:`Richard Hamming <Richard_Hamming>`
 
-quantum gates
-=============
+quantum circuit
+===============
 
-So far we have already seen some important one-qubit and two-qubit gates, such
-as :wiki:`Hadamard gate <Hadamard_transform>`
+So far we have seen several important one-qubit and two-qubit gates, such
+as X gate (the equivalent of NOT gate), :wiki:`Hadamard gate <Hadamard_transform>`,
+and :wiki:`CNOT gate <Controlled_NOT_gate>` (the equivalent of XOR gate)
 
 .. math::
+
+    X = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix},
 
     H = \frac{1}{\sqrt 2}\begin{bmatrix}
     1& 1 \\
     1& -1
-    \end{bmatrix}.
+    \end{bmatrix},
 
-and :wiki:`CNOT gate <Controlled_NOT_gate>`
-
-.. math:: CNOT =\begin{bmatrix}
+    CNOT =\begin{bmatrix}
     1& 0 & 0 & 0\\
     0& 1 & 0 & 0\\
     0& 0 & 0 & 1\\
     0& 0 & 1 & 0
-    \end{bmatrix}
+    \end{bmatrix}.
 
+A quantum circuit is built with many qubit and many quantum gates.
+To reveal the inner working of quantum circuit, graphic representations are created for quantum gates.
+For example, the Hadamard gate and CNOT gate are denoted by
+
+.. image:: https://upload.wikimedia.org/wikipedia/commons/1/1a/Hadamard_gate.svg
+
+.. image:: https://upload.wikimedia.org/wikipedia/commons/4/4e/CNOT_gate.svg
+
+Here the horizontal lines denote qubits, just like the classical case.
+For the CNOT gate, or any controlled-U gate, the black dot denotes the controlling
+qubit.
+
+With a finite set of quantum gates, we can build all unitary operation on any number of qubits,
+just like in the classical computing, NOT, AND, OR gates are enough to construct
+any :wiki:`Boolean function`
+
+.. math:: f: \{0, 1\}^{\times n} \longrightarrow \{0, 1\}
+
+.. seealso::
+   In classical computing, one gate is complete.
+   It could be either NAND, or NOR gate.
+   It could also be a three-bit gate called Toffli gate, which is Controlled-Controlled-NOT gate.
+
+It's easy to show that quantum computer can do all what classical computer can do,
+and we will start from there.
 
 ancilla qubits and classical logic gates
-----------------------------------------
+========================================
 
-There is a gap between universal quantum gates which are low-level  and general unitary operations which are high-level.
+There is a gap between universal quantum gates which are low-level and general unitary operations which are high-level.
 This same conceptual gap exists in classical computing as well.
-For example, when we think of floating point multiplication (which is high-level), we don't bother to think about its low-level implementation such as
+For example, when we think of floating point multiplication, which is high-level,
+we don't bother to think about its low-level implementation such as
 
 * binary representations of floating point numbers;
 * bit by bit multiplications in terms of NOT, AND, OR gates;
 * further encodings of the binary strings for error correction in case electronic noises screw up bits here and there.
 
 Obviously, such high-level thinking is essential for any practical project.
-This poses an question of how to implement classical high-level operations in terms of quantum gates, or at least in terms of high-level quantum operations (unitary operation). This is of concern because classical operation (even the basic logic operations) are not reversible in general.
+This poses an question of how to implement classical high-level operations in terms of quantum gates,
+or at least in terms of high-level quantum operations (unitary operation).
+This is of concern because classical operation (even the basic logic operations) are not reversible in general.
 
-In this section, 
-
-.. _reversible computing: https://en.wikipedia.org/wiki/Reversible_computing
-
-
-
-When it comes to two-bit logic gates, the situation is a little different: there are two input bits and only one output bit.
-Thus we can take two approaches
+When it comes to two-bit logic gates, the situation is a little different:
+there are two input bits and only one output bit. Thus we can take two approaches
 
 1. overwrite one input bit by the output whereas keep the other input bit intact
 1. involve three bits in the computation: keep the input bits intact and write the output to the third bit.
 
-For the XOR gate, the first approach is already sufficient to construct a unitary matrix.
-Suppose we order the input and output as 00, 01, 10, 11 (they can be viewed as binary strings for 0, 1, 2, 3), and overwrite the second bit, then we have
-
+As shown in the previous chapter (put in link), the first approach is sufficient
+to construct a unitary matrix for the XOR gate.
+Suppose we order the input and output as 00, 01, 10, 11 (they can be viewed as binary strings for 0, 1, 2, 3),
+and overwrite the second bit, then we have the CNOT gate.
 
 AND gate
 --------
@@ -73,8 +97,7 @@ The remaining 3 rows are undetermined.
 Since they are not used in real computation, any choice will do as long as it makes the matrix unitary.
 The simplest choice is to have these input states map to themselves, i.e.,
 
-.. math:: 
-    \begin{bmatrix}
+.. math:: \begin{bmatrix}
     1& 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
     0& 1 & 0 & 0& 0 & 0 & 0 & 0 \\
     0& 0 & 1 & 0& 0 & 0 & 0 & 0 \\
@@ -113,8 +136,48 @@ Here the reversibility/unitariness of the gate is explicitly taken care of by th
 In real computations we can always set :math:`y=0` then the last bit is simply the output :math:`f(x)`.
 Applying this recipe to the AND gate, you will get Toffoli gate.
 
-
 This trick is often called Controlled-f gate.
+
+quantum no-cloning theorem
+==========================
+
+There is an important theorem in quantum computing that reveals fundamental
+limitations to quantum state manipulations such as state preparation and state readout.
+The so-called :wiki:`no-cloning theorem` says that
+**it is impossible to copy an unknown quantum state**.
+
+At high-level, this theorem appears obvious because copying is not a reversible
+operation, thus cannot be implemented as a unitary operation.
+However, copying is a valid logic operation, thus can be implemented as a unitary
+matrix using the controlled-f gate trick. Is there a contradiction?
+
+Using the trick of controlled-f gate, classical state copy can be written as
+
+.. math:: (p, q) \longrightarrow (p, q\oplus p)
+
+To copy bit :math:`p` to bit :math:`q`, we initialize bit :math:`q` in the 0 state.
+The corresponding matrix is the CNOT gate.
+
+Applying CNOT gate to the quantum initial state
+
+.. math:: CNOT  (\alpha\left|0\right> + \beta\left|1\right> )\otimes \left|0\right> = \alpha\left|00\right> + \beta\left|11\right>
+
+Note that the result of cloning is
+
+.. math:: (\alpha\left|0\right> + \beta\left|1\right> ) \otimes (\alpha\left|0\right> + \beta\left|1\right> ).
+
+Thus the action of CNOT gate creates entanglement in the qubits, but does not fulfill
+quantum cloning.
+There is no contradiction here because the controlled-f gate trick provides
+unitary matrices whose action on the classical bit space fulfills the classical
+logic operations.
+It does not guarantee the same operation to work on a general quantum state,
+which has no classical analogy.
+
+quantum parallelism
+===================
+
+We will see examples in the algorithm chapter.
 
 quantum gate design
 ===================
@@ -123,4 +186,4 @@ depends on the hardware.
 
 quantum control theory
 
-
+GRAPE paper

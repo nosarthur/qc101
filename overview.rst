@@ -2,9 +2,6 @@
 Overview
 ********
 
-.. _Richard Feynman: https://en.wikipedia.org/wiki/Richard_Feynman
-.. _universal quantum computer: https://en.wikipedia.org/wiki/Quantum_Turing_machine
-
    The future is already here -- it's just not very evenly distributed.   --- :wiki:`William Gibson<William_Gibson>`
 
 motivations of quantum computing

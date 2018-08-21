@@ -15,16 +15,12 @@ A von-Neumann measurement collapses the state to either of the two basis state p
 Thus with a single copy of :math:`\left|\psi\right>`, no information on :math:`\alpha`
 or :math:`\beta` can be retrieved.
 
-quantum no-cloning theorem
-==========================
-
-It is impossible to copy an unknown quantum state.
-
-:wiki:`no-cloning theorem`
-
-
 state tomography
 ================
+
+Due to the :wiki:`no-cloning theorem`
+It is impossible to copy an unknown quantum state.
+
 
 The situation is different when we have multiple copies of the same quantum states.
 Due to the :ref:`quantum no-cloning theorem`,

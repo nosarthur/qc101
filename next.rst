@@ -20,12 +20,6 @@ we also fully ignored many important topics.
   * `Professor John Preskill's Physics229 at Caltech <http://www.theory.caltech.edu/people/preskill/ph229/#lecture>`_
   * `Professor David Mermin's CS483 at Cornell <http://www.lassp.cornell.edu/mermin/qcomp/CS483.html>`_
 
-* papers: most quantum computing papers can be found on `arxiv quant-ph <https://arxiv.org/archive/quant-ph>`_
-  Below is a list of papers that are particularly pedagogical:
-
-  * `Quantum algorithms revisited by Richard Cleve, Artur Ekert, Chiara Macchiavello, Michele Mosca (1998) <https://arxiv.org/abs/quant-ph/9708016>`_
-  * `Quantum Algorithm Implementations for Beginners (2018) <https://arxiv.org/abs/1804.03719>`_
-
 * news feed
 
   * `quantum computing report <https://quantumcomputingreport.com/>`_
@@ -34,6 +28,9 @@ we also fully ignored many important topics.
 
   * `IBM's quantum experience <https://quantumexperience.ng.bluemix.net/qx/experience>`_
   * `Google's playground <http://www.quantumplayground.net/>`_
+
+* papers: most quantum computing papers can be found on `arxiv quant-ph <https://arxiv.org/archive/quant-ph>`_
+  Below is a list of papers that are particularly pedagogical:
 
 
 misc
