@@ -166,8 +166,8 @@ Note that the result of cloning is
 
 .. math:: (\alpha\left|0\right> + \beta\left|1\right> ) \otimes (\alpha\left|0\right> + \beta\left|1\right> ).
 
-Thus the action of CNOT gate creates entanglement in the qubits, but does not fulfill
-quantum cloning.
+Thus the action of CNOT gate creates entanglement in the qubits, but does not
+fulfill quantum cloning.
 There is no contradiction here because the controlled-f gate trick provides
 unitary matrices whose action on the classical bit space fulfills the classical
 logic operations.
@@ -177,13 +177,66 @@ which has no classical analogy.
 quantum parallelism
 ===================
 
-We will see examples in the algorithm chapter.
+The power of quantum computer can be demonstrated in a simple setup.
+Suppose we are interested in a Boolean calculation on :math:`n` bits
+
+.. math:: f: \{0, 1\}^{\times n} \longrightarrow \{0, 1\}^{\times m}
+
+and the corresponding controlled-f version on quantum computer is :math:`U_f`.
+
+We can prepare a special input state
+
+.. math:: \begin{align} H^{\otimes n}\left|0\right>^{\otimes n}
+        = & \left(\left|0\right> + \left|1\right>\right)^{\otimes n}\\
+        = & \left|0\right>  +\left|1\right> + \left|2\right> + \cdots +\left|2^n -1\right>
+        \end{align}
+
+Here I mix two notations and :math:`\left|0\right>` and :math:`\left|1\right>`
+refer to either single qubit or :math:`n` qubit states.
+The interesting properties of this input state include
+
+* It includes all input states of :math:`n` bits.
+* It is not an entangled state.
+
+Then one application of :math:`U_f` gate gives rise to all output states of the
+classical Boolean calculation. If one were to compute them classically, :math:`2^n`
+application of :math:`f` gate would be needed. Thus there appears to be an
+exponential speedup in the quantum case.
+This feature is called quantum parallelism.
+
+However, the superimposed output state is not directly useful because the
+readout collapses the output state on the computational basis.
+Only special computational task can fully utilize this exponential speedup,
+and sometimes the exponential speedup becomes quadratic speedup.
+We will see examples in the algorithm chapter and state readout chapter.
 
 quantum gate design
 ===================
 
-depends on the hardware. 
+Finally I will talk about how one designs quantum gate in reality.
 
-quantum control theory
+There are many qubit implementations nowadays and their Hamiltonians are all
+somewhat different (recall that Hamiltonian is a matrix to describe a quantum
+system's dynamics). Thus the gate implementation differs on different hardware
+platforms. Even for the same hardware, it is possible to implement the same
+quantum gate using different strategies.
 
+Typically part of the Hamiltonian can be controlled. And quantum gate design
+is formulated as an optimization problem. Suppose the controllable degrees of
+freedoms are denoted as :math:`\mathbf\lambda(t)`, then we have
+
+.. math:: argmin_{\mathbf \lambda(t)} \|U(t) - U_{\text gate} \|
+
+where :math:`U_{\text gate}` is the desired gate.
+
+For a time-dependent Hamiltonian :math:`H(t)`, it is tricky to calculate its
+time evolution :math:`U(t)`.
+Note that the formula :math:`U(t) = \exp(-iHt)` only works when :math:`H` is
+time-independent.
+The full treatment of the problem requires quantum control theory.
+A simplified view is to discretize the time into small intervals, and assume
+constant Hamiltonian within each interval.
+The interested reader could start from the following paper of the GRAPE algorithm
+
+* `Navin Khaneja, Timo Reiss, Cindie Kehlet, Thomas Schulte-Herbrügge, Steffen J. Glaser, Optimal control of coupled spin dynamics: design of NMR pulse sequences by gradient ascent algorithms, Journal of Magnetic Resonance 172(2), 296 (2005) <http://www.org.ch.tum.de/glaser/94(GRAPE_JMR_05).pdf>`_
 GRAPE paper
