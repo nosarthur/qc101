@@ -25,7 +25,7 @@ plans and develop devices.
     * `Intel announced 49-qubit processor <https://newsroom.intel.com/news/intel-advances-quantum-neuromorphic-computing-research/>`_
 * Mar.2018
     * `Google announced the new Bristlecone quantum processor with 72 qubits <https://ai.googleblog.com/2018/03/a-preview-of-bristlecone-googles-new.html>`_
-* Jun.2081
+* Jun.2018
     * `IBM released ACQUA (Algorithms and Circuits for QUantum Applications) library <https://www.ibm.com/blogs/research/2018/06/domain-experts-qiskit-acqua/>`_
 * Jul.2018
     * `Google released an open source framework for NISQ algorithms <https://ai.googleblog.com/2018/07/announcing-cirq-open-source-framework.html>`_
@@ -35,8 +35,8 @@ prerequisites, quantum mechanics and computing theory, are only known by the exp
 And most online learning materials are written for physics majors.
 
 The purpose of this book is to introduce quantum computing to non-physicists.
-If the quantum computing field is a state park, then this book describes one
-trail that shows the rough landscape.
+If the quantum computing field is a state park, then this book is a map of a
+trail that I am familiar with.
 
 What this book doesn't do:
 
