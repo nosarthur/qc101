@@ -2,71 +2,29 @@
 Overview
 ********
 
-   The future is already here -- it's just not very evenly distributed.   --- :wiki:`William Gibson<William_Gibson>`
+    Someone told me that each equation I included in the book would halve the sales. I therefore resolved not to have any equations at all.  --- :wiki:`Stephen Hawking`
 
-motivations of quantum computing
---------------------------------
-
-simulate quantum systems with quantum systems
-=============================================
-
-In the early 80s, people started to think about simulating quantum systems
-using quantum systems, for example
-
-* `Yuri Manin <https://en.wikipedia.org/wiki/Yuri_Manin>`_, Computable and uncomputable (in Russian), Sovetskoye Radio (1980)
-* `Richard Feynman`_, Simulating Physics with Computers, IJTP 21, 467 (1982)
-
-This is a very natural idea because simulating a quantum system on a classical computer is expensive.
-There are two aspects to this expense:
-
-* the amount of **space** to store the quantum state, either in memory or in disk
-* the effort to calculate the time evolution, i.e., the **time** complexity
-
-In the most straightforward implementation, the number of bits needed to describe a quantum system on a classical computer grows exponentially with the number of atoms.
-For example, if 10 states are needed to describe an atom, then a 100-atom system would require a vector of size :math:`10^{100}` components.
-Note that the :wiki:`number of atoms in the whole universe<Observable_universe#Matter_content>` is estimated to be about :math:`10^{80}`.
-
-Time evolution of quantum systems is computed using :wiki:`matrix manipulations<Matrix_(mathematics)>`.
-On classical computers, straightforward implementation of :wiki:`matrix multiplication` has computational complexity :math:`O(n^3)`,
-where :math:`n` is the matrix size.
-It is possible to make it slightly more efficient but not much: definitely not :math:`O(n^2)`.
-Going back to our 100-atom system example,
-calculating its dynamics would then have time complexity :math:`O(10^{300})` in the worst case.
-
-Thus in practice, such straightforward implementation on classical computers,
-the so-called :wiki:`full configuration interaction` approach, can only be used to study very small molecules.
-Many approximated methods have been developed to deal with medium sized molecules with less computational burden.
-For large molecules such as proteins which can easily have more than 100,000 atoms, it is still extremely challenging if not impossible to simulate them.
-
-On the other hand, if we have a simulator which is itself quantum mechanical,
-Nature will take care of the time evolution calculation:
-no more matrix multiplications.
-All we need to do is to set up the `Hamiltonian <https://en.wikipedia.org/wiki/Hamiltonian_(quantum_mechanics)>`_
-of the system (i.e., describe how atoms interact),
-and then wait for the desired end time of the simulation.
-For example, if we use the quantum system of interest to 'simulate' itself and we are interested in the result at 1 second, then we just wait for 1 second and look at the system.
-
-Nowadays there is a vague notion of :wiki:`quantum supremacy`
-at 50 qubits.
-It basically says that a quantum computer with 50 qubits has more computational power than any classical computer.
-If we just count the size of the state space, 50 qubit amounts to a state vector with size :math:`2^{50}\simeq 10^6 G`.
-Matrix multiplications on such vectors is indeed daunting.
-There are still controversies on whether this supremacy happens at 50 qubits.
-But it definitely gives strong incentives for the tech companies to make 50-qubit devices.
-
-general-purpose quantum computer
-================================
-
-It doesn't take long for the idea of `universal quantum computer`_ to appear, for example
-
-* `David Deutsch <https://en.wikipedia.org/wiki/David_Deutsch>`_, Quantum theory, the Church-Turing principle and the universal quantum computer, Proc. R. Soc. London A 400, 97 (1985)
-
-The goal here is to build a universal machine that can do all possible calculations, instead of building a specialized machine for each computational task.
-In terms of quantum simulators, it means that one would have a device that can simulate all possible quantum systems at least with some approximations.
-This line of thought is a direct analogy of the classical :wiki:`Church-Turing thesis`.
+.. note::
+   The goal of this chapter is to demystify quantum computing without math.
+   We will talk about what it is and why it is wanted.
 
 comparison to classical computing
 ---------------------------------
+
+In general, "computing" means information processing.
+It can be thought of as all the possible functions (or transformations, or maps)
+that takes some input information and return some output information.
+The term "information" may sound both familiar and elusive.
+According to `Wikipedia <Information>`_,
+
+    Information is any entity or form that provides the answer to a question of some kind or resolves uncertainty.
+
+which is closely related to `information representation <https://en.wikibooks.org/wiki/Foundations_of_Computer_Science/Information_Representation>`_.
+
+what kind of processing is allowed?
+
+
+Before introducing quantum computing, we will first review classical computing.
 
 A classical computer has the following components:
 
@@ -76,8 +34,13 @@ A classical computer has the following components:
 * output device: light bulbs, speaker, screen, etc
 
 
-
 This layout is known as the :wiki:`Von Neumann architecture`.
+
+of classical computer as a dumb but fast file clerk
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="http://www.youtube.com/embed/EKWGGDXe5MA?rel=0" frameborder="0" allowfullscreen></iframe>
 
 Currently, the so-called quantum computers on the market are more of the nature
 of quantum processors, where the computation process is a quantum time evolution
@@ -99,6 +62,10 @@ not much physics background is needed to get some sense of quantum computing.
 The same thing is true for classical computing.
 In fact, most computer scientists and programmers are not familiar with transistors, the basic building block of classical bit.
 
+.. _bloch-sphere1:
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg
+
+   Bloch sphere representation of single qubit states. Each point on the unit sphere corresponds to a valid single qubit state.
 
 
 .. _quantum-classical:
@@ -130,6 +97,72 @@ And I have dedicated chapters for them later.
 For quantum computing, one still needs to work on lower levels.
 The optimal protocols, or even the best hardware implementations are not settled yet.
 
-   Computer science... differs from physics in that it is not actually a science. It does not study natural objects. Neither is it, as you might think, mathematics; although it does use mathematical reasoning pretty extensively. Rather, computer science is like engineering; it is all about getting something to do something, rather than just dealing with abstractions, as in the pre-Smith geology. --- `Richard Feynman`_
+   Computer science... differs from physics in that it is not actually a science. It does not study natural objects. Neither is it, as you might think, mathematics; although it does use mathematical reasoning pretty extensively. Rather, computer science is like engineering; it is all about getting something to do something, rather than just dealing with abstractions, as in the pre-Smith geology. --- :wiki:`Richard Feynman`
+
+
+
+motivations of quantum computing
+--------------------------------
+
+killer applications
+
+simulate quantum systems with quantum systems
+=============================================
+
+In the early 80s, people started to think about simulating quantum systems
+using quantum systems, for example
+
+* :wiki:`Yuri Manin`, Computable and uncomputable (in Russian), Sovetskoye Radio (1980)
+* :wiki:`Richard Feynman`, Simulating Physics with Computers, IJTP 21, 467 (1982)
+
+This is a very natural idea because simulating quantum systems on a classical computer is expensive.
+There are two aspects to this expense:
+
+* the amount of **space** to store the quantum state, either in memory or on disk
+* the effort to calculate the time evolution, i.e., the **time** complexity
+
+In the most straightforward implementation, the number of bits needed to describe a quantum system on a classical computer grows exponentially with the number of atoms.
+For example, if 10 states are needed to describe an atom, then a 100-atom system would require a vector of size :math:`10^{100}` components.
+Note that the :wiki:`number of atoms in the whole universe<Observable_universe#Matter_content>` is estimated to be about :math:`10^{80}`.
+
+Time evolution of quantum systems is computed using :wiki:`matrix manipulations<Matrix_(mathematics)>`.
+On classical computers, straightforward implementation of :wiki:`matrix multiplication` has computational complexity :math:`O(n^3)`,
+where :math:`n` is the matrix size.
+It is possible to make it slightly more efficient but not much: definitely not :math:`O(n^2)`.
+Going back to our 100-atom system example,
+calculating its dynamics would then have time complexity :math:`O(10^{300})` in the worst case.
+
+Thus in practice, such straightforward implementation on classical computers,
+the so-called :wiki:`full configuration interaction` approach, can only be used to study very small molecules.
+Many approximated methods have been developed to deal with medium sized molecules with less computational burden.
+For large molecules such as proteins which can easily have more than 100,000 atoms, it is still extremely challenging if not impossible to simulate them.
+
+On the other hand, if we have a simulator which is itself quantum mechanical,
+Nature will take care of the time evolution calculation:
+no more matrix multiplications.
+All we need to do is to set up the :wiki:`Hamiltonian <Hamiltonian_(quantum_mechanics)>`
+of the system (i.e., describe how atoms interact),
+and then wait for the desired end time of the simulation.
+For example, if we use the quantum system of interest to 'simulate' itself and we are interested in the result at 1 second, then we just wait for 1 second and look at the system.
+
+Nowadays there is a vague notion of :wiki:`quantum supremacy`
+at 50 qubits.
+It basically says that a quantum computer with 50 qubits has more computational power than any classical computer.
+If we just count the size of the state space, 50 qubit amounts to a state vector with size :math:`2^{50}\simeq 10^6 G`.
+Matrix multiplications on such vectors is indeed daunting.
+There are still controversies on whether this supremacy happens at 50 qubits.
+But it definitely gives strong incentives for the tech companies to make 50-qubit devices.
+
+general-purpose quantum computer
+================================
+
+It doesn't take long for the idea of :wiki:`universal quantum computer <quantum Turing machine>`
+to appear, for example
+
+* `David Deutsch <https://en.wikipedia.org/wiki/David_Deutsch>`_, Quantum theory, the Church-Turing principle and the universal quantum computer, Proc. R. Soc. London A 400, 97 (1985)
+
+The goal here is to build a universal machine that can do all possible calculations, instead of building a specialized machine for each computational task.
+In terms of quantum simulators, it means that one would have a device that can simulate all possible quantum systems at least with some approximations.
+This line of thought is a direct analogy of the classical :wiki:`Church-Turing thesis`.
 
 

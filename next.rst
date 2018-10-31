@@ -2,6 +2,9 @@
 What's next
 ***********
 
+   The future is already here. It's just not very evenly distributed.   --- :wiki:`William Gibson`
+
+
 In this book we only have a superficial acquitance of limited topics.
 Apart from hiding all hardware implementations,
 we also fully ignored many important topics.

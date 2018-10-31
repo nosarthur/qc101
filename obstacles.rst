@@ -22,11 +22,13 @@ The second problem is the imperfection of quantum control, which manifests both
 in the state preparation and gate implementation.
 
 The third and probably the most damaging problem is decoherence.
-This is an umbrella term that include various mechanisms.
-The symdrone is that the qubit state changes irreversibly over time even if the 
-experimentalist does not do anything.
-For example, a qubit in the higher energy state has some probability to
-spontaneous lose energy and drop to the lower energy state.
+This is an umbrella term for the irreversible change of the qubits
+even if the experimentalist does not do anything.
+For example, suppose a qubit is implemented by an atom and the two qubit states
+correspond to two energy states of the atom.
+The higher energy state has some probability to spontaneous lose energy and drop
+to the lower energy state.
+
 Another common scenario is that the experimentalist does not know or have
 control over certain interactions between the qubit and its environment.
 

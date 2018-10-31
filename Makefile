@@ -1,7 +1,7 @@
 # Minimal makefile for Sphinx documentation
 #
 
-.PHONY: help Makefile copy clean
+.PHONY: help Makefile cp clean
 
 # You can set these variables from the command line.
 SPHINXOPTS    =

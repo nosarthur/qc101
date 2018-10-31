@@ -46,9 +46,11 @@ any :wiki:`Boolean function`
 .. math:: f: \{0, 1\}^{\times n} \longrightarrow \{0, 1\}
 
 .. seealso::
-   In classical computing, one gate is complete.
+   In classical computing, one gate is universal.
    It could be either NAND, or NOR gate.
    It could also be a three-bit gate called Toffli gate, which is Controlled-Controlled-NOT gate.
+
+* `David P. DiVincenzo, Quantum Gates and Circuits,  Proc. Roy. Soc. Lond. A 454 (1998) 261 <https://arxiv.org/abs/quant-ph/9705009>`_
 
 It's easy to show that quantum computer can do all what classical computer can do,
 and we will start from there.
@@ -239,4 +241,4 @@ constant Hamiltonian within each interval.
 The interested reader could start from the following paper of the GRAPE algorithm
 
 * `Navin Khaneja, Timo Reiss, Cindie Kehlet, Thomas Schulte-Herbrügge, Steffen J. Glaser, Optimal control of coupled spin dynamics: design of NMR pulse sequences by gradient ascent algorithms, Journal of Magnetic Resonance 172(2), 296 (2005) <http://www.org.ch.tum.de/glaser/94(GRAPE_JMR_05).pdf>`_
-GRAPE paper
+
